@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/ico" href="./imgs/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="./node_modules/systemjs/dist/system.js"></script>
+    <script src="./system-config.js"></script>
+    <title>StockWatch</title>
+</head>
+
+<body>
+    <div class=".container-fluid">
+        <nav> <img src="./imgs/logo.png" alt="stock-watch-logo"> StockWatch
+        </nav>
+        <section class="wrapper">
+            <ul class="tabs">
+                <li class="active">My Portfolio</li>
+                <li>Watchlist</li>
+                <li>News</li>
+            </ul>
+
+            <ul class="tab__content">
+                <li class="active">
+                    <div class="content__wrapper">
+                        <h2 class="text-color">Title</h2>
+                     
+                    </div>
+                </li>
+                <li>
+                    <div class="content__wrapper">
+                        <h2 class="text-color">Title</h2>
+
+                    </div>
+                </li>
+                <li>
+                    <div class="content__wrapper">
+                        <h2 class="text-color">Title</h2>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <footer>© Created By Team Basilisk 2017</footer>
+    </div>
+    <script>
+        System.import('main');
+    </script>
+</body>
+
+</html>

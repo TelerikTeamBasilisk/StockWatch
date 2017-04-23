@@ -1,0 +1,27 @@
+{
+  "name": "stock-watch",
+  "version": "1.0.0",
+  "description": "Manage a financial portfolio online. Keep track ot your stocks performance.",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TelerikTeamBasilisk/StockWatch.git"
+  },
+  "keywords": [
+    "stock",
+    "market"
+  ],
+  "author": "Telerik Team Basilisk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TelerikTeamBasilisk/StockWatch/issues"
+  },
+  "homepage": "https://github.com/TelerikTeamBasilisk/StockWatch#readme",
+  "dependencies": {
+    "systemjs": "^0.20.12",
+    "systemjs-plugin-babel": "0.0.21"
+  }
+}
