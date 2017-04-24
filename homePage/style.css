@@ -1,0 +1,23 @@
+body {
+    background: url(stock-1.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+h1 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    color: whitesmoke;
+}
+
+#login-modal .modal-dialog {
+    width: 400px;
+}
+
+#login-modal input[type=text],
+input[type=password] {
+    margin-top: 10px;
+}
+
+#login-modal input[type=password] {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Screen</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Welcome to the Telerik Finance</h1>
+                <p class="text-center">
+                    <a href="#" data-toggle="modal" role="button" data-target="#login-modal" class="btn btn-primary btn-lg">Login Here</a></p>
+            </div>
+        </div>
+    </div>
+    <!--Screen popup login - start
+    TODO - add close sign in the right corner
+    - adding some logo in the top of form-->
+    <div class="modal fade" id="login-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <img src="" alt="">
+                </div>
+                <div id="div-forms">
+                    <form action="">
+                        <div class="modal-body">
+                            <div>
+                                <p class="text-center">Type your email and password here</p>
+                            </div>
+                            <input type="text" class="form-control" required placeholder="Email">
+                            <input type="password" class="form-control" required placeholder="Password">
+                            <div class="checkbox">
+                                <label for="">
+                                <input type="checkbox">Remember me
+                            </label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-success btn-block">Login</button>
+                                </div>
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-primary btn block">Sign up</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Screen popup login - end-->
+
+    <!-- Libs -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
