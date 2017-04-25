@@ -1,4 +1,4 @@
-function tabs{
+function tabs() {
     $(document).ready(function () {
 
         // Variables
@@ -55,3 +55,5 @@ function tabs{
         });
     });
 }
+
+export { tabs };
