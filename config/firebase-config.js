@@ -1,4 +1,6 @@
-const firebaseModule = (function () {
+import { firebase } from 'firebase';
+
+export const firebaseModule = (function () {
 
   // Initialize Firebase
   var config = {
@@ -12,12 +14,11 @@ const firebaseModule = (function () {
 
   firebase.initializeApp(config);
 
-const database = firebase.database().ref();
+    const database = firebase.database().ref();
     const auth = firebase.auth();
 
     return {
-        database, auth
+        database,
+        auth
     };
-} ());
-
-export default firebaseModule;
+}());

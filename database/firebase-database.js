@@ -1,14 +1,10 @@
-import firebaseModule from 'firebase-config';
+import { firebaseModule } from 'firebase-config';
 
 //to be continued ...
-const firebaseDb = (function () {
+export const firebaseDb = (function () {
     const database = firebaseModule.database;
     const auth = firebaseModule.auth;
-
-    function getChild(child) {
-        return database.child(child);
-    }
-
+    
     function createUserWithEmail(email, password, username) {
         return auth.createUserWithEmailAndPassword(email, password)
             .then(() => this.getCurrentUser())
@@ -39,6 +35,4 @@ const firebaseDb = (function () {
         signOut,
         getCurrentUser,
     };
-} ());
-
-export default firebaseDb;
+}());

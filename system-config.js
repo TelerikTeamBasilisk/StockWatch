@@ -8,11 +8,14 @@ SystemJS.config({
         // app scripts
         'main': './js/main.js',
         'validator': './js/helpers/validator.js',
+        'firebase-database': './database/firebase-database.js',
+        'firebase-config': './config/firebase-config.js',
 
         // Library files
         'jquery': 'https://code.jquery.com/jquery-3.2.1.min.js',
         'handlebars': 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js',
-        'sammy': 'https://cdn.jsdelivr.net/sammy/0.7.4/sammy.js'
+        'sammy': 'https://cdn.jsdelivr.net/sammy/0.7.4/sammy.js',
+        'firebase': 'https://www.gstatic.com/firebasejs/3.9.0/firebase.js'
 
     }
 });
