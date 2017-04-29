@@ -1,3 +1,4 @@
+import { userModel } from 'user-model';
 import { htmlHandler } from 'htmlHandler';
 import { templateHandler } from 'templateHandler';
 import { chartProvider } from 'chartProvider';
@@ -27,6 +28,80 @@ class AccountController {
 
     getNews() {
         templateHandler.setTemplate('news', '#content', {});
+    }
+
+    signIn(sammy) {
+        let email = sammy.params.email;
+        let password = sammy.params.password;
+
+        userModel
+            .signIn(email, password)
+            .then(() => {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        sammy.redirect('#/');
+                        resolve();
+                    }, 1500);
+                });
+            }).catch(error => {
+                const code = error.code;
+                const message = error.message;
+
+                let $warningContainer = $('.warning');
+                $warningContainer.removeClass('hide');
+
+                let $dangerMessageContainer = $('#danger-message-container');
+                $dangerMessageContainer.html(message);
+
+                errorLogger.push(`${code} - ${message}`);
+            });
+    }
+
+    signUp(sammy) {
+        let username = sammy.params.username;
+        let email = sammy.params.email;
+        let password = sammy.params.password;
+        let passwordConfirm = sammy.params['password-confirm'];
+
+        userModel
+            .signUp(email, password, username, passwordConfirm)
+            .then(() => {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        sammy.redirect('#/home');
+                        resolve();
+                    }, 750);
+                });
+            }).catch(error => {
+                const code = error.code;
+                const message = error.message;
+
+                let $warningContainer = $('.warning');
+                $warningContainer.removeClass('hide');
+
+                let $dangerMessageContainer = $('#danger-message-container');
+                $dangerMessageContainer.html(message);
+
+                errorLogger.push(`${code} - ${message}`);
+            });
+    }
+
+    signOut(sammy) {
+        userModel
+            .signOut()
+            .then(() => {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        sammy.redirect('#/');
+                        resolve();
+                    }, 750);
+                });
+            }).catch(error => {
+                const code = error.code;
+                const message = error.message;
+
+                errorLogger.push(`${code} - ${message}`);
+            });
     }
 }
 
