@@ -1,0 +1,55 @@
+.home{
+    padding: 50px;
+    text-align: justify;
+}
+
+.home h1, .home h2, .home h3, .home h4{
+    font-size: 20px;
+    text-align: left;
+}
+
+.hero {
+    min-height: 350px;
+    background: url('../imgs/home/stock-price.png') no-repeat 0 0/cover;
+    background-position: 50% 0%;
+    padding: 0;
+    color: #9F9C9D;
+    margin: -50px -50px 20px -50px; 
+}
+
+.hero-content{
+    padding: 100px 50px; 
+    text-align: left;
+    
+}
+
+.hero-content p, .hero-content h1{
+    max-width: 320px;
+}
+
+.hero-content h1{
+    color: white;
+    font-weight: bolder;
+}
+
+.hero-content a{
+    font-size: 13px;
+    font-weight: bolder;
+}
+
+.dashboard-features ul{
+    list-style-type: none;
+    padding: 5px 20px;
+}
+
+.dashboard-features ul li{
+    padding: 5px 0;
+}
+
+.icon{
+    border-radius:50%;
+    width:50px;
+    height:50px;
+    background-color: rgba(159, 156, 157, 0.20);
+    margin-bottom: 20px;
+}

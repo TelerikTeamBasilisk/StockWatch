@@ -5,110 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="./node_modules/systemjs/dist/system.js"></script>
-    <script src="./system-config.js"></script>
-    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="./css/kendo/kendo.common.min.css" rel="stylesheet" />
+    <link href="./css/kendo/kendo.default.min.css" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet">
     <link rel="icon" type="image/ico" href="./imgs/favicon.ico" />
     <title>StockWatch</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center">Welcome to the Telerik Finance</h1>
-                <p class="text-center">
-                    <a href="#" data-toggle="modal" role="button" data-target="#signin-modal" class="btn btn-primary btn-lg btn-success">Sign in</a>
-                    <a href="#" data-toggle="modal" role="button" data-target="#signup-modal" class="btn btn-primary btn-lg">Sign up</a></p>
-            </div>
-        </div>
-    </div>
-    <!--Screen popup signin - start
-    - adding some logo in the top of form-->
-    <div class="modal fade" id="signin-modal">
-        <!--the id in modal must be with id equal to button data-target to happen activation-->
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <img src="./imgs/logo.png" alt="">
-                    <!--<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>-->
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                       <span aria-hidden="true">&times;</span>
-                 </button>
+    <header id="header"> </header>
 
-                </div>
-                <div id="div-forms">
-                    <form action="">
-                        <div class="modal-body">
-                            <div>
-                                <p class="text-center">Type your email and password here</p>
-                            </div>
-                            <input type="text" class="form-control" required placeholder="Email">
-                            <input type="password" class="form-control" required placeholder="Password">
-                            <div class="checkbox">
-                                <input type="checkbox" id="remember1">
-                                <label for="remember1">Remember me</label>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="row">
-                                <div class="col">
-                                    <button type="submit" class="btn btn-success btn-block">Submit</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Screen popup signin - end-->
+    <section class="container">
+        <div id="content"></div>
+    </section>
 
-    <!--Screen popup signup - start
-    - adding some logo in the top of form-->
-    <div class="modal fade" id="signup-modal">
-        <!--the id in modal must be with id equal to button data-target to happen activation-->
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <img src="./imgs/logo.png" alt="">
-                    <!--<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>-->
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                       <span aria-hidden="true">&times;</span>
-                 </button>
-
-                </div>
-                <div id="div-forms">
-                    <form action="">
-                        <div class="modal-body">
-                            <div>
-                                <p class="text-center">Type your username, email and password here</p>
-                            </div>
-                            <input type="text" class="form-control" required placeholder="Username">
-                            <input type="text" class="form-control" required placeholder="Email">
-                            <input type="password" class="form-control" required placeholder="Password">
-                            <input type="password" class="form-control" required placeholder="Confirm Password">
-                            <div class="checkbox">
-                                <input type="checkbox" id="remember2">
-                                <label for="remember2">Remember me</label>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="row">
-                                <div class="col">
-                                    <button type="submit" class="btn btn-success btn-block">Submit</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    <footer id="footer"> </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.12/system.js"></script>
+    <script src="./configs/system-config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sammy.js/0.7.6/sammy.min.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.3/headroom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.3/jQuery.headroom.min.js"></script>
+    <script src="./js/kendo/kendo.all.min.js"></script>
     <script>
         System.import('main');
     </script>
