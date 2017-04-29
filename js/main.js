@@ -1,4 +1,4 @@
-import { router } from '../configs/sammy-config.js';
+import { router } from 'router';
 
 $('body').ready(function () {
     router.start();

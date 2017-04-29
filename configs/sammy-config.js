@@ -1,6 +1,7 @@
-import { headerController } from '../js/controllers/header-controller';
-import { accountController } from '../js/controllers/account-controller';
-import { htmlHandler } from '../js/helpers/html-handler';
+import { htmlHandler } from 'htmlHandler';
+
+import { headerController } from 'headerController';
+import { accountController } from 'accountController';
 
 const router = (function () {
     let sammy = null;

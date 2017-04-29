@@ -1,8 +1,8 @@
 // SHOULD BE CONNECTED TO FIREBASE
 // import firebaseDb from 'firebase-database';
 
-import { templateHandler } from '../helpers/template-handler';
-import { htmlHandler } from '../helpers/html-handler';
+import { htmlHandler } from 'htmlHandler';
+import { templateHandler } from 'templateHandler';
 
 let logged = false; // after adding db => delete
 

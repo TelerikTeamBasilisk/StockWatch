@@ -1,27 +1,28 @@
 <link rel="stylesheet" type="text/css" href="./css/signin.css">
 
-<!--Screen popup signin - start
-    - adding some logo in the top of form-->
+<!--Screen popup signin - start-->
 <div class="modal fade" id="signin-modal" tabindex="-1">
     <!--the id in modal must be with id equal to button data-target to happen activation-->
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-center">
                 <img src="./imgs/logoDark.png" alt="">
-                <!--<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>-->
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">&times;</span>
                  </button>
-
             </div>
             <div id="div-forms">
-                <form action="">
+                <form action="" id="signin-form" method="post">
                     <div class="modal-body">
                         <div>
                             <p class="text-center">Type your email and password here</p>
                         </div>
-                        <input type="text" class="form-control" required placeholder="Email">
-                        <input type="password" class="form-control" required placeholder="Password">
+                        <div class="control-group">
+                            <input class="form-control" type="text" name="email" placeholder="Your email address">
+                        </div>
+                        <div class="control-group">
+                            <input type="password" class="form-control" required placeholder="Password" name="password">
+                        </div>
                         <div class="checkbox">
                             <input type="checkbox" id="remember1">
                             <label for="remember1">Remember me</label>

@@ -1,6 +1,7 @@
-import { htmlHandler } from '../helpers/html-handler';
-import { templateHandler } from '../helpers/template-handler';
-import { chartProvider } from '../helpers/chart-provider';
+import { htmlHandler } from 'htmlHandler';
+import { templateHandler } from 'templateHandler';
+import { chartProvider } from 'chartProvider';
+import { validator } from 'validator';
 
 class AccountController {
     loadSignInPage(sammy) {
@@ -35,6 +36,13 @@ function showModal(identifier, sammy) {
         sammy.redirect('#/home');
         showHeaderFooter();
     });
+
+    if (identifier == '#signin-modal') {
+        validator.validateSignIn();
+    }
+    else {
+        validator.validateSignUp();
+    }
 }
 
 function hideHeaderFooter() {

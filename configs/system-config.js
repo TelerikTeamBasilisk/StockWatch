@@ -5,8 +5,21 @@ SystemJS.config({
     map: {
         'plugin-babel': 'https://cdn.rawgit.com/systemjs/plugin-babel/master/plugin-babel.js',
         'systemjs-babel-build': 'https://cdn.rawgit.com/systemjs/plugin-babel/master/systemjs-babel-browser.js',
-        // app start script 
+        
+        // app script 
         'main': './js/main.js',
+        'router': '../configs/sammy-config.js',
+        'validator': './js/helpers/validator.js',
+
+        'firebase-database': './database/firebase-database.js',
+        'firebase-config': './config/firebase-config.js',
+
+        'htmlHandler': './js/helpers/html-handler.js',
+        'templateHandler': './js/helpers/template-handler.js',
+
+        'headerController': './js/controllers/header-controller.js',
+        'accountController': '././js/controllers/account-controller.js',
+        'chartProvider': './js/helpers/chart-provider.js',
     },
     packages: {
         '/': {

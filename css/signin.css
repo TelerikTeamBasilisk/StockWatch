@@ -27,3 +27,15 @@ input[type=password] {
        display: none !important;
    }
 }
+
+#success_message {
+    display: none;
+}
+
+.error {
+    color: red
+}
+
+.valid.error {
+    color: green;
+}
