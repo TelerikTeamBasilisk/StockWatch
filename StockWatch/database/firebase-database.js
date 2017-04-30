@@ -6,7 +6,6 @@ const firebaseDb = (function () {
     const auth = firebaseModule.auth;
 
     function createUserWithEmail(email, password, username) {
-        console.log('firebase create user with email.');
         return auth.createUserWithEmailAndPassword(email, password)
             .then(() => this.getCurrentUser())
             .then(user => {

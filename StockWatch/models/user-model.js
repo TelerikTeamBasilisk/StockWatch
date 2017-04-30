@@ -7,7 +7,6 @@ class UserModel {
     }
 
     signUp(email, password, username, passwordConfirm) {
-        console.log('usermode signup');
         return firebaseDb.createUserWithEmail(email, password, username)
             .catch(error => Promise.reject(error));
     }

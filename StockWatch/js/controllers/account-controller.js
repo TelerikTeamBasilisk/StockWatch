@@ -51,7 +51,6 @@ class AccountController {
         let email = sammy.params.email;
         let password = sammy.params.password;
         let passwordConfirm = sammy.params['password-confirm'];
-        console.log('accountcontroller signup');
         userModel
             .signUp(email, password, username, passwordConfirm)
             .then(() => {
