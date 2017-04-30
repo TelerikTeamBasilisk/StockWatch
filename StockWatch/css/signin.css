@@ -1,0 +1,41 @@
+#signin-modal .modal-dialog, #signup-modal .modal-dialog {
+    width: 400px;
+}
+
+input {
+    margin-top: 10px;
+}
+
+input[type=password] {
+    margin-bottom: 10px;
+}
+
+.modal-content img {
+    height: 60%;
+    width: 60%;
+}
+
+.modal-header img {
+    height: 40px;
+    width: 39px;
+    position: auto;
+    margin: auto;
+}
+
+@media (min-width: 500px) {
+   .collapse {
+       display: none !important;
+   }
+}
+
+#success_message {
+    display: none;
+}
+
+.error {
+    color: red
+}
+
+.valid.error {
+    color: green;
+}

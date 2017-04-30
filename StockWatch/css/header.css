@@ -1,0 +1,46 @@
+#header {
+    position: relative;
+    height: 75px;
+    margin-bottom: 20px;
+    z-index: 100;
+}
+
+#header a{
+    color: white;
+}
+
+#brand{
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+#brand img{
+    margin-right: 15px;
+}
+
+.btn-margin {
+    margin-left: 5px;
+    margin-right: 5px;    
+}
+
+.transperrentbg {
+  /*background-color:rgba(255, 255, 255, 0.3);*/
+  background-color: #2a2a2a;    
+}
+
+.custom-toggler.navbar-toggler {
+    border-color: white;
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.headroom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all .2s ease-in-out;
+}
+.headroom--unpinned {top: -100px;}
+.headroom--pinned {top: 0;}
