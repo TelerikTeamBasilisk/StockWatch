@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="./css/account-tabs.css">
+<link rel="stylesheet" type="text/css" href="./css/news.css">
 
 <div id="tabs" class="container">
     <!-- Nav tabs -->
@@ -16,7 +17,21 @@
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div>pesho</div>
-        <div>ivan</div>
+        <div>
+            {{#each articles}}
+<div class="col-sm-12 blogShort">
+                     <h3>{{title}}</h3>
+                    <em>Author:{{author}}</em>
+                     <article><p>
+                        {{description}}
+                         <a class="btn btn-sm btn-info pull-right" href="{{url}}">READ MORE</a> 
+                         </p></article>
+                         <footer><small>published at {{publishedAt}}</small></footer>
+                         {{!--<i>published at {{publishedAt}}<i> --}}
+                    
+                 </div>
+            {{/each}}
+            <p class="pull-right">powered by NewsAPI.org</p>
+        </div>
     </div>
 </div>

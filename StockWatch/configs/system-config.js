@@ -5,7 +5,7 @@ SystemJS.config({
     map: {
         'plugin-babel': 'https://cdn.rawgit.com/systemjs/plugin-babel/master/plugin-babel.js',
         'systemjs-babel-build': 'https://cdn.rawgit.com/systemjs/plugin-babel/master/systemjs-babel-browser.js',
-        
+
         // app script 
         'main': './js/main.js',
         'router': '../configs/sammy-config.js',
@@ -16,6 +16,7 @@ SystemJS.config({
 
         'htmlHandler': './js/helpers/html-handler.js',
         'templateHandler': './js/helpers/template-handler.js',
+        'stockData': './database/stock-database.js',
 
         'headerController': './js/controllers/header-controller.js',
         'accountController': '././js/controllers/account-controller.js',

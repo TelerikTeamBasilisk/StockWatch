@@ -1,0 +1,23 @@
+.blogShort {
+    border-bottom: 1px solid grey;
+    padding: 25px;
+}
+
+.add {
+    background: #333;
+    padding: 10%;
+    height: 300px;
+}
+
+h3 {
+    color: grey;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.btn {
+    margin-top: 25px;
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

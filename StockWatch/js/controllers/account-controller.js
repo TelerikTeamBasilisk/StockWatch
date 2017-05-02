@@ -3,6 +3,7 @@ import { htmlHandler } from 'htmlHandler';
 import { templateHandler } from 'templateHandler';
 import { chartProvider } from 'chartProvider';
 import { validator } from 'validator';
+import { stockData } from 'stockData';
 
 class AccountController {
     loadSignInPage(sammy) {
@@ -27,7 +28,7 @@ class AccountController {
     }
 
     getNews() {
-        templateHandler.setTemplate('news', '#content', {});
+        stockData.getNews().then((json) => templateHandler.setTemplate('news', '#content', json));
     }
 
     signIn(sammy) {
@@ -79,15 +80,14 @@ class AccountController {
 
 function showModal(identifier, sammy) {
     $(identifier).modal('show');
-    $(identifier).on('hidden.bs.modal', function () {
+    $(identifier).on('hidden.bs.modal', function() {
         sammy.redirect('#/home');
         showHeaderFooter();
     });
 
     if (identifier == '#signin-modal') {
         validator.validateSignIn();
-    }
-    else {
+    } else {
         validator.validateSignUp();
     }
 }
