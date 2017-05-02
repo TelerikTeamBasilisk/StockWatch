@@ -1,7 +1,8 @@
 const HANDLERS_PATH = './content/templates/';
 
-let templateHandler = (function () {
-    function getTemplate(templateName) {
+class TemplateHandler {
+
+    getTemplate(templateName) {
         let templatePath = `${HANDLERS_PATH}${templateName}.handlebars`;
 
         return new Promise((resolve, reject) => {
@@ -11,8 +12,8 @@ let templateHandler = (function () {
         });
     }
 
-    function setTemplate(templateName, targetSelector, dataObject) {
-        return getTemplate(templateName)
+    setTemplate(templateName, targetSelector, dataObject) {
+        return this.getTemplate(templateName)
             .then(template => {
                 let compiledTemplate = Handlebars.compile(template);
                 let templateHtml = compiledTemplate(dataObject);
@@ -25,9 +26,6 @@ let templateHandler = (function () {
             }).catch(console.log);
     }
 
-    return {
-        getTemplate, setTemplate
-    };
-}());
-
+}
+const templateHandler = new TemplateHandler();
 export { templateHandler };

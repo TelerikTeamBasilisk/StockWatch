@@ -1,7 +1,8 @@
 const HTMLS_PATH = './content/';
 
-let htmlHandler = (function () {
-    function getHtml(htmlName) {
+class HtmlHandler {
+
+    getHtml(htmlName) {
         let htmlPath = `${HTMLS_PATH}${htmlName}.html`;
 
         return new Promise((resolve, reject) => {
@@ -11,19 +12,15 @@ let htmlHandler = (function () {
         });
     }
 
-    function setHtml(htmlName, targetSelector) {
+    setHtml(htmlName, targetSelector) {
         targetSelector = targetSelector || '#content';
 
-        return getHtml(htmlName)
+        return this.getHtml(htmlName)
             .then(html => {
                 $(targetSelector).html(html);
             }).catch(console.log);
     }
+}
 
-    return {
-        getHtml, 
-        setHtml, 
-    };
-}());
-
+const htmlHandler = new HtmlHandler();
 export { htmlHandler };

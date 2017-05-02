@@ -3,15 +3,15 @@ import { htmlHandler } from 'htmlHandler';
 import { headerController } from 'headerController';
 import { accountController } from 'accountController';
 
-const router = (function () {
-    let sammy = null;
+class Router {
 
-    function start() {
-        sammy = Sammy(function () {
+
+    start() {
+        let sammy = null;
+        sammy = Sammy(function() {
             this.before({}, () => {
                 headerController.initialize();
-            }
-            );
+            });
             this.get('#/', (sammy) => sammy.redirect('#/home'));
             this.get('#/home', () => htmlHandler.setHtml('home', '#content'));
 
@@ -30,14 +30,12 @@ const router = (function () {
             this.get('#/about', () => htmlHandler.setHtml('about', '#content'));
         });
 
-        $(function () {
+        $(function() {
             sammy.run('#/');
         });
     }
+}
 
-    return {
-        start,
-    };
-}());
+const router = new Router();
 
 export { router };

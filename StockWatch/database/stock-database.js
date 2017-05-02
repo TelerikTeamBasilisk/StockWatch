@@ -12,9 +12,6 @@ class StockData {
                 .fail(reject);
         });
     }
-
-
 }
-
 const stockData = new StockData();
 export { stockData };

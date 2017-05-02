@@ -1,6 +1,6 @@
-export const validator = (function () {
+class Validator {
 
-    function validateSignIn() {
+    validateSignIn() {
         $('#signin-form').validate({
             rules: {
                 email: {
@@ -12,7 +12,7 @@ export const validator = (function () {
                     minlength: 5,
                 }
             },
-            highlight: function (element) {
+            highlight: function(element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');
             },
             // Showing green OK if input is valid
@@ -23,7 +23,7 @@ export const validator = (function () {
         });
     }
 
-    function validateSignUp() {
+    validateSignUp() {
         $('#signup-form').validate({
             rules: {
                 email: {
@@ -42,7 +42,7 @@ export const validator = (function () {
                     minlength: 3,
                 }
             },
-            highlight: function (element) {
+            highlight: function(element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');
             },
             // Showing green OK if input is valid
@@ -52,9 +52,7 @@ export const validator = (function () {
             // }
         });
     }
+}
 
-    return {
-        validateSignIn,
-        validateSignUp
-    };
-}());
+const validator = new Validator();
+export { validator };
