@@ -3,21 +3,15 @@
     padding: 25px;
 }
 
-.add {
-    background: #333;
-    padding: 10%;
-    height: 300px;
-}
-
-h3 {
+#news-title {
     color: grey;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.btn {
-    margin-top: 25px;
+#read-more {
+    margin-top: 20px;
 }
 
-p {
+article>p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
