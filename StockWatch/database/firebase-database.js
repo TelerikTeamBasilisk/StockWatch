@@ -11,6 +11,8 @@ class firebaseDataBase {
             .then(() => this.getCurrentUser())
             .then(user => {
                 user.updateProfile({ displayName: username });
+                 localStorage.setItem('username', username);
+                 localStorage.setItem('userUid', user.uid);
             })
             .catch(error => Promise.reject(error));
     }
@@ -36,10 +38,48 @@ class firebaseDataBase {
         });
     }
 
-    subscribe(email){
+    addToWatchlist(userId, company) {
+        return new Promise(resolve => {
+            let companyToAdd = database.child('users').child(userId).child('watchlist').child(company);
+            companyToAdd.update({ 'company': company });
+
+            resolve(companyToAdd);
+        });
+    }
+
+    removeFromWatchlist(userId, company) {
+        return new Promise(resolve => {
+            let companyToRemove = database.child('users').child(userId).child('watchlist').child(company);
+            movieToRemove.update({ 'company': [] });
+
+            resolve(companyToRemove);
+        });
+    }
+
+    getUsersWatchlist(userId) {
+        return new Promise((resolve, reject) => {
+            let watchlist = database.child('users').child(userId).child('watchlist');
+            watchlist.once('value', data => {
+                if (!data.val()) {
+                    reject({ heading: 'Empty', message: 'The watchlist is empty.' });
+                    return;
+                }
+
+                let dataKeys = Object.keys(data.val());
+                let companies = [];
+                dataKeys.forEach(key => {
+                    companies.push(key);
+                });
+
+                resolve(companies);
+            });
+        });
+    }
+
+    subscribe(email) {
         //TODO
     }
 }
 
-const  firebaseDb = new firebaseDataBase();
+const firebaseDb = new firebaseDataBase();
 export { firebaseDb };
