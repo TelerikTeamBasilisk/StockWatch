@@ -1,11 +1,12 @@
 import { firebaseModule } from 'firebase-config';
 
-//to be continued ...
-const firebaseDb = (function () {
-    const database = firebaseModule.database; // value is never used?
-    const auth = firebaseModule.auth;
+class firebaseDataBase {
+    constructor() {
+        this.database = firebaseModule.database;
+        this.auth = firebaseModule.auth;
+    }
 
-    function createUserWithEmail(email, password, username) {
+    createUserWithEmail(email, password, username) {
         return auth.createUserWithEmailAndPassword(email, password)
             .then(() => this.getCurrentUser())
             .then(user => {
@@ -14,35 +15,31 @@ const firebaseDb = (function () {
             .catch(error => Promise.reject(error));
     }
 
-    function signInWithEmail(email, password) {
+    signInWithEmail(email, password) {
         return auth.signInWithEmailAndPassword(email, password)
             .catch(error => Promise.reject(error));
     }
 
-    function signOut() {
+    signOut() {
         return auth.signOut();
     }
 
-    function getCurrentUser() {
+    getCurrentUser() {
         return new Promise(resolve => {
             auth.onAuthStateChanged(userInfo => resolve(userInfo));
         });
     }
 
-    function onAuthStateChanged(callback) {
+    onAuthStateChanged(callback) {
         return auth.onAuthStateChanged(function (user) {
             callback(user);
         });
     }
 
+    subscribe(email){
+        //TODO
+    }
+}
 
-    return {
-        createUserWithEmail,
-        signInWithEmail,
-        signOut,
-        getCurrentUser,
-        onAuthStateChanged
-    };
-}());
-
+const  firebaseDb = new firebaseDataBase();
 export { firebaseDb };
