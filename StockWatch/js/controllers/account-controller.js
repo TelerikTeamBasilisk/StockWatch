@@ -76,11 +76,21 @@ class AccountController {
                 });
             }).catch(console.log);
     }
+
+    addToWatchlist(sammy) {
+        const company = sammy.params.id;
+        userModel.addToWatchlist(company);
+    }
+
+    removeFromWatchlist(sammy) {
+        const company = sammy.params.id;
+        userModel.removeFromWatchlist(company);
+    }
 }
 
 function showModal(identifier, sammy) {
     $(identifier).modal('show');
-    $(identifier).on('hidden.bs.modal', function() {
+    $(identifier).on('hidden.bs.modal', function () {
         sammy.redirect('#/home');
         showHeaderFooter();
     });
