@@ -4,6 +4,7 @@ import { templateHandler } from 'templateHandler';
 import { chartProvider } from 'chartProvider';
 import { validator } from 'validator';
 import { stockData } from 'stockData';
+import { time } from 'time';
 
 class AccountController {
     loadSignInPage(sammy) {
@@ -25,6 +26,8 @@ class AccountController {
 
     getWatchlist() {
         templateHandler.setTemplate('watchlist', '#content', {});
+        time.getDate();
+        time.startTime();
     }
 
     getNews() {
@@ -90,7 +93,7 @@ class AccountController {
 
 function showModal(identifier, sammy) {
     $(identifier).modal('show');
-    $(identifier).on('hidden.bs.modal', function () {
+    $(identifier).on('hidden.bs.modal', function() {
         sammy.redirect('#/home');
         showHeaderFooter();
     });

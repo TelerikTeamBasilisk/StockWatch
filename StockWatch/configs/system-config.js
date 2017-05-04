@@ -21,6 +21,7 @@ SystemJS.config({
         'headerController': './js/controllers/header-controller.js',
         'accountController': '././js/controllers/account-controller.js',
         'chartProvider': './js/helpers/chart-provider.js',
+        'time': './js/helpers/date-provider.js',
 
         'user-model': './models/user-model.js'
     },

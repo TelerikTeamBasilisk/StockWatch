@@ -1,0 +1,137 @@
+#right-column,
+#middle-column {
+    float: right;
+    width: 33.3%;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+#left-column {
+    float: right;
+    width: 33.4%;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.square-right {
+    float: left;
+    position: relative;
+    width: 47.5%;
+    padding-bottom: 47.5%;
+    /* = width for a 1:1 aspect ratio */
+    margin: 1.25%;
+    background-color: #7bd8d4;
+    overflow: hidden;
+    border-radius: 3%;
+}
+
+.square-middle {
+    float: left;
+    position: relative;
+    width: 97.5%;
+    padding-bottom: 97.5%;
+    /* = width for a 1:1 aspect ratio */
+    margin: 1.25%;
+    background-color: #002a5e;
+    overflow: hidden;
+    border-radius: 1.5%;
+}
+
+.square-left {
+    float: left;
+    position: relative;
+    width: 97.5%;
+    padding-bottom: 48.25%;
+    /* = width for a 1:2 aspect ratio */
+    margin: 0.79%;
+    background-color: #b2010a;
+    overflow: hidden;
+    border-radius: 1.5%;
+}
+
+.content-square-right {
+    position: absolute;
+    height: 97.5%;
+    width: 97.5%;
+    font-size: 18px;
+    font-family: 'Lato', verdana, sans-serif;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.content-square-middle {
+    position: absolute;
+    height: 97.5%;
+    width: 97.5%;
+    padding: 1.25%;
+    font-size: 16px;
+    font-family: 'Lato', verdana, sans-serif;
+    color: whitesmoke;
+}
+
+.content-square-left {
+    position: absolute;
+    height: 97.5%;
+    width: 97.5%;
+    font-size: 18px;
+    font-family: 'Lato', verdana, sans-serif;
+    color: whitesmoke;
+}
+
+#right-column .company-name {
+    padding-top: 8%;
+}
+
+#right-column .index {
+    font-size: 1.5em;
+}
+
+#right-column .green-arrow {
+    width: 13%;
+}
+
+#right-column .red-arrow {
+    width: 14%;
+}
+
+#middle-column h4 {
+    text-align: center;
+}
+
+#middle-column p {
+    margin-bottom: 0.4rem;
+    font-size: 0.8em;
+}
+
+.align-right {
+    position: relative;
+    float: right;
+    font-size: 0.8em;
+}
+
+.align-left {
+    position: relative;
+    float: left;
+    font-size: 0.8em;
+}
+
+#left-column #date {
+    padding-top: 12%;
+    text-align: center;
+}
+
+#left-column #hour-minute {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#left-column #opening {
+    padding-top: 12%;
+    text-align: center;
+    font-size: 1.2em;
+    border-bottom: 1px solid grey;
+    margin-bottom: 0.1rem;
+}
+
+#left-column #close {
+    text-align: center;
+    font-size: 1.2em;
+}
