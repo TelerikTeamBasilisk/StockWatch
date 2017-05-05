@@ -1,44 +1,43 @@
 import { firebaseModule } from 'firebase-config';
 
-class firebaseDataBase {
-    constructor() {
-        this.database = firebaseModule.database;
-        this.auth = firebaseModule.auth;
-    }
+const firebaseDataBase = (function () {
 
-    createUserWithEmail(email, password, username) {
+    const database = firebaseModule.database;
+    const auth = firebaseModule.auth;
+
+    function createUserWithEmail(email, password, username) {
         return auth.createUserWithEmailAndPassword(email, password)
-            .then(() => this.getCurrentUser())
+            .then(() => getCurrentUser())
             .then(user => {
                 user.updateProfile({ displayName: username });
-                 localStorage.setItem('username', username);
-                 localStorage.setItem('userUid', user.uid);
+                localStorage.setItem('username', username);
+                localStorage.setItem('userUid', user.uid);
             })
             .catch(error => Promise.reject(error));
     }
 
-    signInWithEmail(email, password) {
+    function signInWithEmail(email, password) {
         return auth.signInWithEmailAndPassword(email, password)
             .catch(error => Promise.reject(error));
     }
 
-    signOut() {
+    function signOut() {
         return auth.signOut();
     }
 
-    getCurrentUser() {
+    function getCurrentUser() {
         return new Promise(resolve => {
             auth.onAuthStateChanged(userInfo => resolve(userInfo));
         });
     }
 
-    onAuthStateChanged(callback) {
+    function onAuthStateChanged(callback) {
         return auth.onAuthStateChanged(function (user) {
             callback(user);
         });
     }
 
-    addToWatchlist(userId, company) {
+    function addToWatchlist(userId, company) {
         return new Promise(resolve => {
             let companyToAdd = database.child('users').child(userId).child('watchlist').child(company);
             companyToAdd.update({ 'company': company });
@@ -47,7 +46,7 @@ class firebaseDataBase {
         });
     }
 
-    removeFromWatchlist(userId, company) {
+    function removeFromWatchlist(userId, company) {
         return new Promise(resolve => {
             let companyToRemove = database.child('users').child(userId).child('watchlist').child(company);
             movieToRemove.update({ 'company': [] });
@@ -56,7 +55,7 @@ class firebaseDataBase {
         });
     }
 
-    getUsersWatchlist(userId) {
+    function getUsersWatchlist(userId) {
         return new Promise((resolve, reject) => {
             let watchlist = database.child('users').child(userId).child('watchlist');
             watchlist.once('value', data => {
@@ -76,10 +75,21 @@ class firebaseDataBase {
         });
     }
 
-    subscribe(email) {
+    function subscribe(email) {
         //TODO
     }
-}
 
-const firebaseDb = new firebaseDataBase();
-export { firebaseDb };
+    return {
+        createUserWithEmail,
+        signInWithEmail,
+        signOut,
+        getCurrentUser,
+        onAuthStateChanged,
+        addToWatchlist,
+        removeFromWatchlist,
+        getUsersWatchlist,
+        subscribe
+    };
+}());
+
+export { firebaseDataBase };

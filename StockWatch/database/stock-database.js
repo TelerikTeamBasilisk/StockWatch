@@ -1,5 +1,3 @@
-import { templateHandler } from 'templateHandler';
-
 class StockData {
 
     getNews() {
@@ -13,5 +11,6 @@ class StockData {
         });
     }
 }
+
 const stockData = new StockData();
 export { stockData };

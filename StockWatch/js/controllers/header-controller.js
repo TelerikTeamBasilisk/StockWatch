@@ -1,6 +1,6 @@
 import { htmlHandler } from 'htmlHandler';
 import { templateHandler } from 'templateHandler';
-import { firebaseDb } from 'firebase-database';
+import { firebaseDataBase } from 'firebase-database';
 
 class HeaderController {
 
@@ -21,7 +21,7 @@ class HeaderController {
 }
 
 function checkLoggedIn() {
-    firebaseDb.onAuthStateChanged(user => {
+    firebaseDataBase.onAuthStateChanged(user => {
         if (user) {
             return true;
         } else {

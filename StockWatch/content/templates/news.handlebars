@@ -19,15 +19,17 @@
     <div class="tab-content">
         <div class="container">
             {{#each articles}}
-<div class="col-sm-12 blogShort">
-                     <h3 id="news-title">{{title}}</h3>
-                    <em>Author:{{author}}</em>
-                     <article><p>
+            <div class="col-sm-12 blogShort">
+                <h3 id="news-title">{{title}}</h3>
+                <em>Author:{{author}}</em>
+                <article>
+                    <p>
                         {{description}}
-                         <a id="read-more" class="btn btn-sm btn-info pull-right" href="{{url}}">READ MORE</a> 
-                         </p></article>
-                         <footer><small>published at {{publishedAt}}</small></footer>       
-                 </div>
+                        <a id="read-more" class="btn btn-sm btn-info pull-right" href="{{url}}">READ MORE</a>
+                    </p>
+                </article>
+                <footer><small>published at {{publishedAt}}</small></footer>
+            </div>
             {{/each}}
             <p align="right"><em>powered by NewsAPI.org</em></p>
 

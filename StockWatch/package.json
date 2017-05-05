@@ -1,7 +1,7 @@
 {
   "name": "stock-watch",
   "version": "1.0.0",
-  "description": "Manage a financial portfolio online. Keep track ot your stocks performance.",
+  "description": "Keep track of stocks performance online. Get all of your data from one place",
   "main": "main.js",
   "scripts": {
     "test": "test"

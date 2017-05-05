@@ -1,8 +1,7 @@
-.vscode/*
-node_modules/*
+*/.vscode/*
+*/node_modules/*
 functions/*
 .firebaserc
 firebase.json
 database.rules.json
 firebase.json
-*/.vscode/*

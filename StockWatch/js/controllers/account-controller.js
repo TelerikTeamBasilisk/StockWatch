@@ -25,9 +25,10 @@ class AccountController {
     }
 
     getWatchlist() {
-        templateHandler.setTemplate('watchlist', '#content', {});
-        time.startTime();
-        time.getDate();
+        templateHandler.setTemplate('watchlist', '#content', {}).then(() => {
+            time.startTime();
+            time.getDate();
+        });
     }
 
     getNews() {
@@ -37,6 +38,7 @@ class AccountController {
     validateContactForm() {
         htmlHandler.setHtml('contact', '#content').then(() => validator.validateContactForm());
     }
+
     signIn(sammy) {
         let email = sammy.params.email;
         let password = sammy.params.password;
