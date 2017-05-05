@@ -1,0 +1,23 @@
+#contact-form {
+    width: 400px;
+    height: 500px;
+    margin: auto;
+    width: 50%;
+}
+
+#success_message {
+    display: none;
+}
+
+.error {
+    color: red
+}
+
+.valid.error {
+    color: green;
+}
+
+input,
+textarea {
+    margin-top: 10px;
+}

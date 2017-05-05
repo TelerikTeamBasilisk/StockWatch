@@ -28,6 +28,7 @@ class Router {
 
             // Other
             this.get('#/about', () => htmlHandler.setHtml('about', '#content'));
+            this.get('#/contact', accountController.validateContactForm);
         });
 
         $(function() {

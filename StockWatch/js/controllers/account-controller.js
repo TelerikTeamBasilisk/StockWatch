@@ -26,14 +26,17 @@ class AccountController {
 
     getWatchlist() {
         templateHandler.setTemplate('watchlist', '#content', {});
-        time.getDate();
         time.startTime();
+        time.getDate();
     }
 
     getNews() {
         stockData.getNews().then((json) => templateHandler.setTemplate('news', '#content', json));
     }
 
+    validateContactForm() {
+        htmlHandler.setHtml('contact', '#content').then(() => validator.validateContactForm());
+    }
     signIn(sammy) {
         let email = sammy.params.email;
         let password = sammy.params.password;
