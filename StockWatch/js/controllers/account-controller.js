@@ -2,6 +2,7 @@ import { userModel } from 'user-model';
 import { htmlHandler } from 'htmlHandler';
 import { templateHandler } from 'templateHandler';
 import { chartProvider } from 'chartProvider';
+import { headerController } from 'headerController';
 import { validator } from 'validator';
 import { stockData } from 'stockData';
 import { time } from 'time';
@@ -18,22 +19,38 @@ class AccountController {
     }
 
     getPortfolio() {
-        htmlHandler.setHtml('portfolio', '#content').then(() => {
-            chartProvider.getLineChart('#line-chart');
-            chartProvider.getPieChart('#pie-chart');
-        });
+        if (headerController.checkLoggedIn()) {
+            htmlHandler.setHtml('portfolio', '#content').then(() => {
+                chartProvider.getLineChart('#line-chart');
+                chartProvider.getPieChart('#pie-chart');
+            });
+        }
+        else {
+            htmlHandler.setHtml('home', '#content');
+        }
     }
 
     getWatchlist() {
-        templateHandler.setTemplate('watchlist', '#content', {}).then(() => {
-            time.startTime();
-            time.getDate();
-        });
+        if (headerController.checkLoggedIn()) {
+            templateHandler.setTemplate('watchlist', '#content', {}).then(() => {
+                time.startTime();
+                time.getDate();
+            });
+        }
+        else {
+            htmlHandler.setHtml('home', '#content');
+        }
     }
 
     getNews() {
-        stockData.getNews().then((json) => templateHandler.setTemplate('news', '#content', json));
+        if (headerController.checkLoggedIn()) {
+           stockData.getNews().then((json) => templateHandler.setTemplate('news', '#content', json));
+        }
+        else {
+            htmlHandler.setHtml('home', '#content');
+        }
     }
+
     getUserSettings() {
         htmlHandler.setHtml('user-settings', '#content').then(() => {
             console.log('User-settings are loaded');
@@ -103,7 +120,7 @@ class AccountController {
 
 function showModal(identifier, sammy) {
     $(identifier).modal('show');
-    $(identifier).on('hidden.bs.modal', function() {
+    $(identifier).on('hidden.bs.modal', function () {
         sammy.redirect('#/home');
         showHeaderFooter();
     });

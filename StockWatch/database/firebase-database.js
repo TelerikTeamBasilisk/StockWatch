@@ -76,7 +76,7 @@ const firebaseDataBase = (function () {
     }
 
     function subscribe(email) {
-        //TODO
+        database.ref('subscriptions').push(email);
     }
 
     return {

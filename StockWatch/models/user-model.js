@@ -1,25 +1,25 @@
-import { firebaseDb } from 'firebase-database';
+import { firebaseDataBase } from 'firebase-database';
 
 class UserModel {
     signIn(email, password) {
-        return firebaseDb.signInWithEmail(email, password)
+        return firebaseDataBase.signInWithEmail(email, password)
             .catch(error => Promise.reject(error));
     }
 
     signUp(email, password, username, passwordConfirm) {
-        return firebaseDb.createUserWithEmail(email, password, username)
+        return firebaseDataBase.createUserWithEmail(email, password, username)
             .catch(error => Promise.reject(error));
     }
 
     signOut() {
-        return firebaseDb.signOut()
+        return firebaseDataBase.signOut()
             .catch(error => Promise.reject(error));
     }
 
      addToWatchlist(company) {
         return new Promise(resolve => {
             const userId = localStorage.getItem('userUid');
-            firebaseDb.addToWatchlist(userId, company)
+            firebaseDataBase.addToWatchlist(userId, company)
                 .then(data => resolve(data));
         });
     }
@@ -27,7 +27,7 @@ class UserModel {
     removeFromWatchlist(company) {
         return new Promise(resolve => {
             const userId = localStorage.getItem('userUid');
-            firebaseDb.removeFromWatchlist(userId, company)
+            firebaseDataBase.removeFromWatchlist(userId, company)
                 .then(data => resolve(data));
         });
     }
