@@ -1,4 +1,4 @@
-#right-column,
+/*#right-column,
 #middle-column {
     float: right;
     width: 33.3%;
@@ -9,26 +9,24 @@
     float: right;
     width: 33.4%;
     background-color: rgba(255, 255, 255, 0.95);
-}
+}*/
 
 .square-right {
     float: left;
     position: relative;
-    width: 47.5%;
-    padding-bottom: 47.5%;
-    /* = width for a 1:1 aspect ratio */
+    width: 97.5%;
+    padding-bottom: 97.5%;
     margin: 1.25%;
-    background-color: #7bd8d4;
+    background-color: #0cb23e;
     overflow: hidden;
-    border-radius: 3%;
+    border-radius: 1.5%;
 }
 
 .square-middle {
     float: left;
     position: relative;
     width: 97.5%;
-    padding-bottom: 97.5%;
-    /* = width for a 1:1 aspect ratio */
+    padding-bottom: 197%;
     margin: 1.25%;
     background-color: #002a5e;
     overflow: hidden;
@@ -39,12 +37,18 @@
     float: left;
     position: relative;
     width: 97.5%;
-    padding-bottom: 48.25%;
-    /* = width for a 1:2 aspect ratio */
-    margin: 0.79%;
+    padding-bottom: 97.5%;
+    margin: 1.25%;
     background-color: #b2010a;
     overflow: hidden;
     border-radius: 1.5%;
+}
+
+.right-column,
+.left-column,
+.middle-column {
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 .content-square-right {
@@ -62,7 +66,7 @@
     height: 97.5%;
     width: 97.5%;
     padding: 1.25%;
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'Lato', verdana, sans-serif;
     color: whitesmoke;
 }
@@ -71,67 +75,82 @@
     position: absolute;
     height: 97.5%;
     width: 97.5%;
-    font-size: 18px;
+    font-size: 22px;
     font-family: 'Lato', verdana, sans-serif;
     color: whitesmoke;
 }
 
-#right-column .company-name {
-    padding-top: 8%;
+.right-column .company-name {
+    padding-top: 12%;
 }
 
-#right-column .index {
+.right-column .index {
     font-size: 1.5em;
 }
 
-#right-column .green-arrow {
+.right-column .green-arrow {
     width: 13%;
 }
 
-#right-column .red-arrow {
+.right-column .red-arrow {
     width: 14%;
 }
 
-#middle-column h4 {
-    text-align: center;
+.middle-column h4 {
+    padding-top: 5%;
 }
 
-#middle-column p {
+.middle-column p {
     margin-bottom: 0.4rem;
-    font-size: 0.8em;
 }
 
-.align-right {
+.middle-column .align-right {
     position: relative;
     float: right;
-    font-size: 0.8em;
+    overflow: hidden;
+    width: 25%;
 }
 
-.align-left {
+.middle-column .align-left {
     position: relative;
     float: left;
-    font-size: 0.8em;
+    overflow: hidden;
+    width: 75%;
 }
 
-#left-column #date {
-    padding-top: 12%;
-    text-align: center;
+.left-column #date {
+    padding-top: 25%;
 }
 
-#left-column #hour-minute {
-    text-align: center;
-    font-size: 1.5em;
-}
-
-#left-column #opening {
-    padding-top: 12%;
-    text-align: center;
-    font-size: 1.2em;
+.left-column #opening {
+    padding-top: 25%;
     border-bottom: 1px solid grey;
     margin-bottom: 0.1rem;
 }
 
-#left-column #close {
+.left-column #close {
     text-align: center;
-    font-size: 1.2em;
+}
+
+.right-column .red {
+    background-color: red;
+}
+
+@media (max-width: 575px) {
+    .content-square-left p,
+    .content-square-right p {
+        font-size: 2em;
+    }
+    .content-square-middle div {
+        font-size: 1.25em;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .content-square-middle div {
+        font-size: 0.85em;
+    }
+    .middle-column h4 {
+        font-size: 0.85em;
+    }
 }
