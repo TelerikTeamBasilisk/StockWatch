@@ -16,16 +16,16 @@ class HeaderController {
     }
 
      checkLoggedIn() {
-        firebaseDataBase.onAuthStateChanged(user => {
+        let user = firebaseDataBase.getCurrentUser();
+
             if (user) {
                 return true;
             } else {
                 return false;
             }
-        });
     }
+
     updateHeader() {
-        console.log('working');
         return templateHandler.setTemplate('header', '#header', { isLoggedIn: this.checkLoggedIn() });
     }
 }

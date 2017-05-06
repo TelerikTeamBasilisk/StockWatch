@@ -19,15 +19,15 @@ class AccountController {
     }
 
     getPortfolio() {
-        if (headerController.checkLoggedIn()) {
+         if (headerController.checkLoggedIn()){
             htmlHandler.setHtml('portfolio', '#content').then(() => {
                 chartProvider.getLineChart('#line-chart');
                 chartProvider.getPieChart('#pie-chart');
             });
-        }
-        else {
-            htmlHandler.setHtml('home', '#content');
-        }
+         }
+         else{
+              htmlHandler.setHtml('home', '#content');
+         }
     }
 
     getWatchlist() {

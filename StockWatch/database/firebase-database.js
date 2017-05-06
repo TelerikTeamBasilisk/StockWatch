@@ -26,9 +26,7 @@ const firebaseDataBase = (function () {
     }
 
     function getCurrentUser() {
-        return new Promise(resolve => {
-            auth.onAuthStateChanged(userInfo => resolve(userInfo));
-        });
+        return auth.currentUser;
     }
 
     function onAuthStateChanged(callback) {
