@@ -1,0 +1,14 @@
+.tab-content .heading {
+    padding-top: 5.5%;
+    color: green;
+}
+
+.row .form {
+    margin-top: 5%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.row label {
+    color: red;
+}

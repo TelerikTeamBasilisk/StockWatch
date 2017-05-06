@@ -25,6 +25,7 @@ class Router {
             this.get('#/account/portfolio', accountController.getPortfolio);
             this.get('#/account/watchlist', accountController.getWatchlist);
             this.get('#/account/news', accountController.getNews);
+            this.get('#/account/user-settings', accountController.getUserSettings);
 
             // Other
             this.get('#/about', () => htmlHandler.setHtml('about', '#content'));

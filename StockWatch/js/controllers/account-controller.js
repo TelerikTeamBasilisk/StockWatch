@@ -34,6 +34,11 @@ class AccountController {
     getNews() {
         stockData.getNews().then((json) => templateHandler.setTemplate('news', '#content', json));
     }
+    getUserSettings() {
+        htmlHandler.setHtml('user-settings', '#content').then(() => {
+            console.log('User-settings are loaded');
+        });
+    }
 
     validateContactForm() {
         htmlHandler.setHtml('contact', '#content').then(() => validator.validateContactForm());
