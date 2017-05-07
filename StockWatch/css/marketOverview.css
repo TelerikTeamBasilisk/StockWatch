@@ -1,0 +1,26 @@
+       #line-chart,
+       {
+           height: 100%;
+           width: 100%;
+       }
+       
+       .row label {
+           margin-top: 5%;
+           color: red;
+           padding-left: 5%;
+       }
+       
+       .row p {
+           margin-top: 5.5%;
+       }
+       
+       .row p label {
+           color: blue;
+       }
+       
+       @media (max-width: 991px) {
+           .row p {
+               margin-top: 5%;
+               padding-left: 8%;
+           }
+       }

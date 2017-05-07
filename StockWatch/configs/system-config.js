@@ -17,6 +17,7 @@ SystemJS.config({
         'htmlHandler': './js/helpers/html-handler.js',
         'templateHandler': './js/helpers/template-handler.js',
         'stockData': './database/stock-database.js',
+        'calendar': './js/helpers/calendar.js',
 
         'headerController': './js/controllers/header-controller.js',
         'accountController': '././js/controllers/account-controller.js',

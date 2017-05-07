@@ -6,6 +6,7 @@ import { headerController } from 'headerController';
 import { validator } from 'validator';
 import { stockData } from 'stockData';
 import { time } from 'time';
+import { calendar } from 'calendar';
 
 class AccountController {
     loadSignInPage(sammy) {
@@ -18,16 +19,16 @@ class AccountController {
         hideHeaderFooter();
     }
 
-    getPortfolio() {
-         if (headerController.checkLoggedIn()){
-            htmlHandler.setHtml('portfolio', '#content').then(() => {
-                chartProvider.getLineChart('#line-chart');
-                chartProvider.getPieChart('#pie-chart');
+    getMarketOverview() {
+        if (headerController.checkLoggedIn()) {
+            htmlHandler.setHtml('marketOverview', '#content').then(() => {
+                chartProvider.createChart('#line-chart');
+                chartProvider.refresh();
+                calendar.showCalendar();
             });
-         }
-         else{
-              htmlHandler.setHtml('home', '#content');
-         }
+        } else {
+            htmlHandler.setHtml('home', '#content');
+        }
     }
 
     getWatchlist() {
@@ -36,17 +37,15 @@ class AccountController {
                 time.startTime();
                 time.getDate();
             });
-        }
-        else {
+        } else {
             htmlHandler.setHtml('home', '#content');
         }
     }
 
     getNews() {
         if (headerController.checkLoggedIn()) {
-           stockData.getNews().then((json) => templateHandler.setTemplate('news', '#content', json));
-        }
-        else {
+            stockData.getNews().then((json) => templateHandler.setTemplate('news', '#content', json));
+        } else {
             htmlHandler.setHtml('home', '#content');
         }
     }
@@ -70,7 +69,7 @@ class AccountController {
             .then(() => {
                 return new Promise(resolve => {
                     setTimeout(() => {
-                        sammy.redirect('#/account/portfolio');
+                        sammy.redirect('#/account/marketOverview');
                         resolve();
                     }, 1500);
                 });
@@ -87,7 +86,7 @@ class AccountController {
             .then(() => {
                 return new Promise(resolve => {
                     setTimeout(() => {
-                        sammy.redirect('#/account/portfolio');
+                        sammy.redirect('#/account/marketOverview');
                         resolve();
                     }, 750);
                 });
@@ -120,7 +119,7 @@ class AccountController {
 
 function showModal(identifier, sammy) {
     $(identifier).modal('show');
-    $(identifier).on('hidden.bs.modal', function () {
+    $(identifier).on('hidden.bs.modal', function() {
         sammy.redirect('#/home');
         showHeaderFooter();
     });

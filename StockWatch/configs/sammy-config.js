@@ -22,7 +22,7 @@ class Router {
             this.post('#/account/sign-in', accountController.signIn);
             this.post('#/account/sign-up', accountController.signUp);
 
-            this.get('#/account/portfolio', accountController.getPortfolio);
+            this.get('#/account/marketOverview', accountController.getMarketOverview);
             this.get('#/account/watchlist', accountController.getWatchlist);
             this.get('#/account/news', accountController.getNews);
             this.get('#/account/user-settings', accountController.getUserSettings);

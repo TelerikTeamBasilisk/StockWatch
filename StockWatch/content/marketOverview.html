@@ -1,0 +1,69 @@
+<link rel="stylesheet" type="text/css" href="./css/account-tabs.css">
+<link rel="stylesheet" type="text/css" href="./css/marketOverview.css">
+
+<!--Here I tried to put links for jqueru UI (for the datePicker) but it does not work, so I move them in index.html-->
+
+<div id="tabs" class="container">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" href="#/account/marketOverview" role="tab">Market Overview</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#/account/watchlist" role="tab">Watchlist</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#/account/news" role="tab">News</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <label for="sel1">Stock Index 1</label>
+                <select class="form-control" id="sel1">
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+      </select>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <label for="sel2">Stock Index 2</label>
+                <select class="form-control" id="sel2">
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+        <option>S&P 500</option>
+      </select>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <p><label for="start-date">Start date: </label><br><input type="text" class="datepicker" id="start-date"></p>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <p><label for="end-date">End date: </label><br><input type="text" class="datepicker" id="end-date"></p>
+            </div>
+
+        </div>
+        <div class="row container">
+            <!--<img id="line-chart" class="img-fluid" alt="Responsive image">-->
+            <div id="line-chart" class="col-xs-12 col-md-12 col-lg-12"> </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        $(".datepicker").datepicker();
+    });
+</script>
