@@ -1,5 +1,5 @@
 import { htmlHandler } from 'htmlHandler';
-
+import { footerController } from 'footerController';
 import { headerController } from 'headerController';
 import { accountController } from 'accountController';
 
@@ -25,10 +25,13 @@ class Router {
             this.get('#/account/portfolio', accountController.getPortfolio);
             this.get('#/account/watchlist', accountController.getWatchlist);
             this.get('#/account/news', accountController.getNews);
+            this.get('#/account/user-settings', accountController.getUserSettings);
 
             // Other
             this.get('#/about', () => htmlHandler.setHtml('about', '#content'));
             this.get('#/contact', accountController.validateContactForm);
+            this.get('#/newsletter', footerController.subscription);
+            this.get('#/account/sign-out', accountController.signOut);
         });
 
         $(function() {

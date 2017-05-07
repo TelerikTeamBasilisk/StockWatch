@@ -18,7 +18,6 @@ class TemplateHandler {
                 let compiledTemplate = Handlebars.compile(template);
                 let templateHtml = compiledTemplate(dataObject);
                 let $wrappedTemplate = $('<div/>');
-
                 $wrappedTemplate.html(templateHtml);
                 $(targetSelector).html($wrappedTemplate.html());
 

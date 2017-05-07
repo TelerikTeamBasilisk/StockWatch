@@ -12,7 +12,7 @@ export const firebaseModule = (function () {
 
     firebase.initializeApp(config);
 
-    const database = firebase.database().ref();
+    const database = firebase.database();
     const auth = firebase.auth();
 
     return {

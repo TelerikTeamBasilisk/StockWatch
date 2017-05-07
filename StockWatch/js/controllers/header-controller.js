@@ -15,19 +15,19 @@ class HeaderController {
         htmlHandler.setHtml('footer', '#footer');
     }
 
-    updateHeader() {
-        return templateHandler.setTemplate('header', '#header', { isLoggedIn: checkLoggedIn });
-    }
-}
+     checkLoggedIn() {
+        let user = firebaseDataBase.getCurrentUser();
 
-function checkLoggedIn() {
-    firebaseDataBase.onAuthStateChanged(user => {
-        if (user) {
-            return true;
-        } else {
-            return false;
-        }
-    });
+            if (user) {
+                return true;
+            } else {
+                return false;
+            }
+    }
+
+    updateHeader() {
+        return templateHandler.setTemplate('header', '#header', { isLoggedIn: this.checkLoggedIn() });
+    }
 }
 
 const headerController = new HeaderController();

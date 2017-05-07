@@ -20,6 +20,7 @@ SystemJS.config({
 
         'headerController': './js/controllers/header-controller.js',
         'accountController': '././js/controllers/account-controller.js',
+        'footerController': './js/controllers/footer-controller.js',
         'chartProvider': './js/helpers/chart-provider.js',
         'time': './js/helpers/date-provider.js',
 
