@@ -12,3 +12,7 @@
 .row label {
     color: red;
 }
+
+#save-changes {
+    margin-bottom: 1.5%;
+}
