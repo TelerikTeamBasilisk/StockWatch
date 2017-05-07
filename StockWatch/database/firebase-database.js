@@ -35,22 +35,17 @@ const firebaseDataBase = (function () {
         });
     }
 
-    function addToWatchlist(userId, company) {
-        return new Promise(resolve => {
-            let companyToAdd = database.child('users').child(userId).child('watchlist').child(company);
-            companyToAdd.update({ 'company': company });
+    function addToWatchlist() {
+        let list = {
+            companyOne: $('#sel1').val(),
+            companyTwo: $('#sel2').val(),
+            companyThree: $('#sel3').val(),
+            companyFour: $('#sel4').val(),
+        }
 
-            resolve(companyToAdd);
-        });
-    }
+        let userId = getCurrentUser();
 
-    function removeFromWatchlist(userId, company) {
-        return new Promise(resolve => {
-            let companyToRemove = database.child('users').child(userId).child('watchlist').child(company);
-            movieToRemove.update({ 'company': [] });
-
-            resolve(companyToRemove);
-        });
+        database.ref('users/' + userId.uid).child('watchlist').set(list);
     }
 
     function getUsersWatchlist(userId) {
@@ -100,7 +95,6 @@ const firebaseDataBase = (function () {
         getCurrentUser,
         onAuthStateChanged,
         addToWatchlist,
-        removeFromWatchlist,
         getUsersWatchlist,
         subscribe
     };

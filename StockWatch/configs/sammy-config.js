@@ -32,6 +32,7 @@ class Router {
             this.get('#/contact', accountController.validateContactForm);
             this.get('#/newsletter', footerController.subscription);
             this.get('#/account/sign-out', accountController.signOut);
+            this.get('#/account/add-to-watchlist', accountController.addToWatchlist);
         });
 
         $(function() {
