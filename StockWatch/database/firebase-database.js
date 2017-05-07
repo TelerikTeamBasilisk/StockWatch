@@ -74,7 +74,23 @@ const firebaseDataBase = (function () {
     }
 
     function subscribe(email) {
-        database.ref('subscriptions').push(email);
+        let subscriptionList = database.ref('subscriptions').once('value').then(function(snapshot){
+            let list = snapshot.val();
+
+            if(list === null){
+                database.ref('subscriptions').push(email);
+                return;
+            }
+
+            for(let key in list){
+                if(list[key] === email){
+                    alert('This email is in the subscription box!');
+                    return;
+                }
+            }
+
+            database.ref('subscriptions').push(email);
+        })      
     }
 
     return {
