@@ -5,6 +5,7 @@ import { chartProvider } from 'chartProvider';
 import { validator } from 'validator';
 import { stockData } from 'stockData';
 import { time } from 'time';
+import { calendar } from 'calendar';
 
 class AccountController {
     loadSignInPage(sammy) {
@@ -34,8 +35,8 @@ class AccountController {
     getMarketOverview(sammy) {
         if (userModel.isUserLoggedIn()) {
             htmlHandler.setHtml('market-overview', '#content').then(() => {
-                chartProvider.getLineChart('#line-chart');
-                chartProvider.getPieChart('#pie-chart');
+                chartProvider.createChart();
+                calendar.showCalendar();
             });
         }
         else {
@@ -64,9 +65,7 @@ class AccountController {
 
     getUserSettings(sammy) {
         if (userModel.isUserLoggedIn()) {
-            htmlHandler.setHtml('user-settings', '#content').then(() => {
-                console.log('User-settings are loaded');
-            });
+            htmlHandler.setHtml('user-settings', '#content');
         } else {
             sammy.redirect('#/home');
         }
@@ -120,11 +119,6 @@ class AccountController {
     addToWatchlist(sammy) {
         const company = sammy.params.id;
         userModel.addToWatchlist(company);
-    }
-
-    removeFromWatchlist(sammy) {
-        const company = sammy.params.id;
-        userModel.removeFromWatchlist(company);
     }
 }
 

@@ -1,5 +1,7 @@
 <link rel="stylesheet" type="text/css" href="./css/account-tabs.css">
-<link rel="stylesheet" type="text/css" href="./css/portfolio.css">
+<link rel="stylesheet" type="text/css" href="./css/market-overview.css">
+
+<!--Here I tried to put links for jqueru UI (for the datePicker) but it does not work, so I move them in index.html-->
 
 <div id="tabs" class="container">
     <!-- Nav tabs -->
@@ -18,8 +20,50 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="row">
-            <div id="line-chart" class="col-xs-12 col-md-12 col-lg-7"> </div>
-            <div id="pie-chart" class="col-xs-12 col-md-12 col-lg-5"> </div>
+            <div class="col-lg-3 col-sm-6">
+                <label for="sel1">Stock Index 1</label>
+                <select class="form-control" id="sel1">
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                 </select>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <label for="sel2">Stock Index 2</label>
+                <select class="form-control" id="sel2">
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                    <option>S&P 500</option>
+                </select>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <p><label for="start-date">Start date: </label><br><input type="text" class="datepicker" id="start-date"></p>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <p><label for="end-date">End date: </label><br><input type="text" class="datepicker" id="end-date"></p>
+            </div>
+
+        </div>
+        <div class="container">
+            <canvas id="chart"></canvas>
         </div>
     </div>
 </div>
+
+<script>
+    $(function () {
+        $(".datepicker").datepicker();
+    });
+
+</script>

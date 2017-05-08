@@ -23,6 +23,8 @@ class Router {
             this.post('#/account/sign-in', accountController.signIn);
             this.post('#/account/sign-up', accountController.signUp);
 
+            this.get('#/account/add-to-watchlist', accountController.addToWatchlist);
+            this.get('#/account/sign-out', accountController.signOut);
             this.get('#/account/market-overview', accountController.getMarketOverview);
             this.get('#/account/watchlist', accountController.getWatchlist);
             this.get('#/account/news', accountController.getNews);
@@ -31,8 +33,8 @@ class Router {
             // Other
             this.get('#/about', () => htmlHandler.setHtml('about', '#content'));
             this.get('#/contact', accountController.validateContactForm);
-            this.get('#/newsletter', footerController.subscription);
-            this.get('#/account/sign-out', accountController.signOut);
+            this.post('#/newsletter', footerController.subscription);
+            this.post('#/contact', footerController.contact);
         });
 
         $(function () {

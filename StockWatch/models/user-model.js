@@ -16,24 +16,8 @@ class UserModel {
             .catch(error => Promise.reject(error));
     }
 
-    addToWatchlist(company) {
-        return new Promise(resolve => {
-            const userId = localStorage.getItem('userUid');
-            firebaseDataBase.addToWatchlist(userId, company)
-                .then(data => resolve(data));
-        });
-    }
-
-    removeFromWatchlist(company) {
-        return new Promise(resolve => {
-            const userId = localStorage.getItem('userUid');
-            firebaseDataBase.removeFromWatchlist(userId, company)
-                .then(data => resolve(data));
-        });
-    }
-
-    getWatchlist() {
-        //TODO
+    addToWatchlist() {
+        firebaseDataBase.addToWatchlist();
     }
 
     isUserLoggedIn() {
