@@ -18,14 +18,6 @@ const time = (function () {
         }
     }
 
-    // add zero in front of numbers < 10
-    function formatOneDigitNumber(i) {
-        if (i < 10) {
-            i = '0' + i;
-        }
-        return i;
-    }
-
     function getDate() {
         let today = new Date();
         let day = formatOneDigitNumber(today.getDate());
@@ -34,8 +26,12 @@ const time = (function () {
         $('#date').html(`${day}/${month}/${year}`);
     }
 
-    function getCountDownToOpenClose() {
-
+    // add zero in front of numbers < 10
+    function formatOneDigitNumber(i) {
+        if (i < 10) {
+            i = '0' + i;
+        }
+        return i;
     }
 
     return {
