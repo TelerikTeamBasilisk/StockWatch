@@ -110,11 +110,6 @@ class AccountController {
         const company = sammy.params.id;
         userModel.addToWatchlist(company);
     }
-
-    removeFromWatchlist(sammy) {
-        const company = sammy.params.id;
-        userModel.removeFromWatchlist(company);
-    }
 }
 
 function showModal(identifier, sammy) {

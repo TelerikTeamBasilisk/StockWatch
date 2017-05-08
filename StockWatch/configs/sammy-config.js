@@ -22,6 +22,8 @@ class Router {
             this.post('#/account/sign-in', accountController.signIn);
             this.post('#/account/sign-up', accountController.signUp);
 
+            this.get('#/account/add-to-watchlist', accountController.addToWatchlist);
+            this.get('#/account/sign-out', accountController.signOut);
             this.get('#/account/marketOverview', accountController.getMarketOverview);
             this.get('#/account/watchlist', accountController.getWatchlist);
             this.get('#/account/news', accountController.getNews);
@@ -31,8 +33,6 @@ class Router {
             this.get('#/about', () => htmlHandler.setHtml('about', '#content'));
             this.get('#/contact', accountController.validateContactForm);
             this.get('#/newsletter', footerController.subscription);
-            this.get('#/account/sign-out', accountController.signOut);
-            this.get('#/account/add-to-watchlist', accountController.addToWatchlist);
         });
 
         $(function() {
