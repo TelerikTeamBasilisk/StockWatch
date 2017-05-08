@@ -13,7 +13,9 @@ const time = (function () {
         $('#state').html(`NASDAQ is ${openClose.State}.`);
         $('#will').html(`${openClose.Will} in ${formatOneDigitNumber(openClose.Hours)}:${formatOneDigitNumber(openClose.Minutes)}:${formatOneDigitNumber(openClose.Seconds)}`);
 
-        let t = setTimeout(startTime, 1000);
+        if (window.location.href.includes('watchlist')) {
+            setTimeout(startTime, 1000);
+        }
     }
 
     // add zero in front of numbers < 10
