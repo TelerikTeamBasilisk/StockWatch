@@ -32,7 +32,7 @@ class Router {
             // Other
             this.get('#/about', () => htmlHandler.setHtml('about', '#content'));
             this.get('#/contact', accountController.validateContactForm);
-            this.get('#/newsletter', footerController.subscription);
+            this.post('#/newsletter', footerController.subscription);
         });
 
         $(function() {

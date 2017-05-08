@@ -90,7 +90,11 @@ class AccountController {
                         resolve();
                     }, 750);
                 });
-            }).catch(console.log);
+            }).catch(error => {
+                console.log(error.message);
+                $('.label.label-danger').text(error.message);
+
+            });
     }
 
     signOut(sammy) {

@@ -80,7 +80,7 @@ const firebaseDataBase = (function () {
 
             for(let key in list){
                 if(list[key] === email){
-                    alert('This email is in the subscription box!');
+                    $('.label.label-danger').text('The email address is already subscribed.');
                     return;
                 }
             }
