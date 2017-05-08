@@ -9,9 +9,15 @@ const firebaseDataBase = (function () {
         return auth.createUserWithEmailAndPassword(email, password)
             .then(() => getCurrentUser())
             .then(user => {
-                user.updateProfile({ displayName: username });
-                localStorage.setItem('username', username);
-                localStorage.setItem('userUid', user.uid);
+                let initialWatchlist = {
+                    companyOne: 'Google',
+                    companyTwo: 'Facebook',
+                    companyThree: 'Dell',
+                    companyFour: 'Amazon',
+                }
+
+                database.ref('users/' + user.uid).child('watchlist').set(initialWatchlist);
+                database.ref('users/' + user.uid).child('username').set(username);
             })
             .catch(error => Promise.reject(error));
     }
@@ -36,16 +42,18 @@ const firebaseDataBase = (function () {
     }
 
     function addToWatchlist() {
-        let list = {
+        let watchlist = {
             companyOne: $('#sel1').val(),
             companyTwo: $('#sel2').val(),
             companyThree: $('#sel3').val(),
             companyFour: $('#sel4').val(),
         }
 
-        let userId = getCurrentUser();
+        let user = getCurrentUser();
 
-        database.ref('users/' + userId.uid).child('watchlist').set(list);
+        database.ref('users/' + user.uid).child('watchlist').set(watchlist).catch(error =>{
+                console.log(error.message);
+            });;
     }
 
     function getUsersWatchlist(userId) {
@@ -69,24 +77,33 @@ const firebaseDataBase = (function () {
     }
 
     function subscribe(email) {
-        let subscriptionList = database.ref('subscriptions').once('value').then(function(snapshot){
+        let subscriptionList = database.ref('subscriptions').once('value').then(function (snapshot) {
             let list = snapshot.val();
 
-            if(list === null){
-                database.ref('subscriptions').push(email);
-                return;
-            }
-
-            for(let key in list){
-                if(list[key] === email){
-                    alert('This email is in the subscription box!');
+            for (let key in list) {
+                if (list[key] === email) {
+                    $('.label.label-danger').text('The email address is already subscribed.');
                     return;
                 }
             }
 
-            database.ref('subscriptions').push(email);
-        })      
+            database.ref('subscriptions').push(email).catch(error =>{
+                console.log(error.message);
+            });;
+        })
     }
+
+     function contact(name, email, message) {
+            let contactInfo = {
+                nameOfClient: name,
+                emailOfClient: email,
+                messageOfClient: message
+            }
+
+            database.ref('contact-us').push(contactInfo).catch(error =>{
+                console.log(error.message);
+            });
+        }
 
     return {
         createUserWithEmail,
@@ -96,7 +113,8 @@ const firebaseDataBase = (function () {
         onAuthStateChanged,
         addToWatchlist,
         getUsersWatchlist,
-        subscribe
+        subscribe,
+        contact
     };
 }());
 

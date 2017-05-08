@@ -19,18 +19,6 @@ class UserModel {
      addToWatchlist() {
             firebaseDataBase.addToWatchlist();
     }
-
-    removeFromWatchlist(company) {
-        return new Promise(resolve => {
-            const userId = localStorage.getItem('userUid');
-            firebaseDataBase.removeFromWatchlist(userId, company)
-                .then(data => resolve(data));
-        });
-    }
-
-    getWatchlist() {
-    //TODO
-    }
 }
 
 const userModel = new UserModel();

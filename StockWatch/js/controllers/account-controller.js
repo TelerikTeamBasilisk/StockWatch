@@ -89,7 +89,11 @@ class AccountController {
                         resolve();
                     }, 750);
                 });
-            }).catch(console.log);
+            }).catch(error => {
+                console.log(error.message);
+                $('.label.label-danger').text(error.message);
+
+            });
     }
 
     signOut(sammy) {
@@ -108,11 +112,6 @@ class AccountController {
     addToWatchlist(sammy) {
         const company = sammy.params.id;
         userModel.addToWatchlist(company);
-    }
-
-    removeFromWatchlist(sammy) {
-        const company = sammy.params.id;
-        userModel.removeFromWatchlist(company);
     }
 }
 
