@@ -8,8 +8,10 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#read-more {
-    margin-top: 20px;
+#read-more,
+.fb-share-button {
+    margin-top: 1%;
+    margin-left: 1%;
 }
 
 article>p {

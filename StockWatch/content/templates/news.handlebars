@@ -1,5 +1,17 @@
 <link rel="stylesheet" type="text/css" href="./css/account-tabs.css">
-<link rel="stylesheet" type="text/css" href="./css/news.css">
+<link rel="stylesheet" type="text/css" href="./css/news.css"> {{!--start-Facebook JS SDK--}}
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+</script>
+{{!--end-Facebook JS SDK--}}
 
 <div id="tabs" class="container">
     <!-- Nav tabs -->
@@ -25,6 +37,8 @@
                 <article>
                     <p>
                         {{description}}
+                        <div class="fb-share-button pull-right" data-href="{{url}}" data-layout="button_count" data-size="large"
+                            data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="">Share</a></div>
                         <a id="read-more" class="btn btn-sm btn-info pull-right" href="{{url}}">READ MORE</a>
                     </p>
                 </article>
