@@ -2,59 +2,74 @@ import { userModel } from 'user-model';
 import { htmlHandler } from 'htmlHandler';
 import { templateHandler } from 'templateHandler';
 import { chartProvider } from 'chartProvider';
-import { headerController } from 'headerController';
 import { validator } from 'validator';
 import { stockData } from 'stockData';
 import { time } from 'time';
 
 class AccountController {
     loadSignInPage(sammy) {
-        htmlHandler.setHtml('sign-in', '#content', {}).then(() => showModal('#signin-modal', sammy));
-        hideHeaderFooter();
+        if (!userModel.isUserLoggedIn()) {
+            htmlHandler.setHtml('sign-in', '#content', {})
+                .then(() => showModal('#signin-modal', sammy))
+                .then(() => validator.validateSignIn());
+            hideHeaderFooter();
+        }
+        else {
+            sammy.redirect('#/account/market-overview');
+        }
     }
 
     loadSignUpPage(sammy) {
-        htmlHandler.setHtml('sign-up', '#content', {}).then(() => showModal('#signup-modal', sammy));
-        hideHeaderFooter();
+        if (!userModel.isUserLoggedIn()) {
+            htmlHandler.setHtml('sign-up', '#content', {})
+                .then(() => showModal('#signup-modal', sammy))
+                .then(() => validator.validateSignUp());
+            hideHeaderFooter();
+        }
+        else {
+            sammy.redirect('#/account/market-overview');
+        }
     }
 
-    getPortfolio() {
-         if (headerController.checkLoggedIn()){
-            htmlHandler.setHtml('portfolio', '#content').then(() => {
+    getMarketOverview(sammy) {
+        if (userModel.isUserLoggedIn()) {
+            htmlHandler.setHtml('market-overview', '#content').then(() => {
                 chartProvider.getLineChart('#line-chart');
                 chartProvider.getPieChart('#pie-chart');
             });
-         }
-         else{
-              htmlHandler.setHtml('home', '#content');
-         }
+        }
+        else {
+            sammy.redirect('#/home');
+        }
     }
 
-    getWatchlist() {
-        if (headerController.checkLoggedIn()) {
+    getWatchlist(sammy) {
+        if (userModel.isUserLoggedIn()) {
             templateHandler.setTemplate('watchlist', '#content', {}).then(() => {
                 time.startTime();
                 time.getDate();
             });
-        }
-        else {
-            htmlHandler.setHtml('home', '#content');
-        }
-    }
-
-    getNews() {
-        if (headerController.checkLoggedIn()) {
-           stockData.getNews().then((json) => templateHandler.setTemplate('news', '#content', json));
-        }
-        else {
-            htmlHandler.setHtml('home', '#content');
+        } else {
+            sammy.redirect('#/home');
         }
     }
 
-    getUserSettings() {
-        htmlHandler.setHtml('user-settings', '#content').then(() => {
-            console.log('User-settings are loaded');
-        });
+    getNews(sammy) {
+        if (userModel.isUserLoggedIn()) {
+            stockData.getNews().then((json) => templateHandler.setTemplate('news', '#content', json));
+        } else {
+            sammy.redirect('#/home');
+        }
+    }
+
+    getUserSettings(sammy) {
+        if (userModel.isUserLoggedIn()) {
+            htmlHandler.setHtml('user-settings', '#content').then(() => {
+                console.log('User-settings are loaded');
+            });
+        } else {
+            sammy.redirect('#/home');
+        }
     }
 
     validateContactForm() {
@@ -68,13 +83,10 @@ class AccountController {
         userModel
             .signIn(email, password)
             .then(() => {
-                return new Promise(resolve => {
-                    setTimeout(() => {
-                        sammy.redirect('#/account/portfolio');
-                        resolve();
-                    }, 1500);
-                });
-            }).catch(console.log);
+                onModalClose('#signin-modal', sammy, '#/account/market-overview');
+                $('#signin-modal').modal('toggle');
+            })
+            .catch(console.log);
     }
 
     signUp(sammy) {
@@ -82,16 +94,14 @@ class AccountController {
         let email = sammy.params.email;
         let password = sammy.params.password;
         let passwordConfirm = sammy.params['password-confirm'];
+
         userModel
             .signUp(email, password, username, passwordConfirm)
             .then(() => {
-                return new Promise(resolve => {
-                    setTimeout(() => {
-                        sammy.redirect('#/account/portfolio');
-                        resolve();
-                    }, 750);
-                });
-            }).catch(console.log);
+                onModalClose('#signup-modal', sammy, '#/account/portfolio');
+                $('#signup-modal').modal('toggle');
+            })
+            .catch(console.log);
     }
 
     signOut(sammy) {
@@ -120,16 +130,7 @@ class AccountController {
 
 function showModal(identifier, sammy) {
     $(identifier).modal('show');
-    $(identifier).on('hidden.bs.modal', function () {
-        sammy.redirect('#/home');
-        showHeaderFooter();
-    });
-
-    if (identifier == '#signin-modal') {
-        validator.validateSignIn();
-    } else {
-        validator.validateSignUp();
-    }
+    onModalClose(identifier, sammy, '#/home');
 }
 
 function hideHeaderFooter() {
@@ -140,6 +141,13 @@ function hideHeaderFooter() {
 function showHeaderFooter() {
     $('#header').show();
     setTimeout(() => { $('#footer').show(); }, 100);
+}
+
+function onModalClose(identifier, sammy, redirect) {
+    $(identifier).on('hidden.bs.modal', function () {
+        sammy.redirect(redirect);
+        showHeaderFooter();
+    });
 }
 
 const accountController = new AccountController();

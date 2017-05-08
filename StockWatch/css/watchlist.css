@@ -73,8 +73,7 @@
 
 .content-square-left {
     position: absolute;
-    height: 97.5%;
-    width: 97.5%;
+    width: 100%;
     font-size: 22px;
     font-family: 'Lato', verdana, sans-serif;
     color: whitesmoke;
@@ -122,18 +121,19 @@
     padding-top: 25%;
 }
 
-.left-column #opening {
-    padding-top: 25%;
-    border-bottom: 1px solid grey;
+.left-column #state {
+    padding: 15% 20% 3% 25%;
     margin-bottom: 0.1rem;
+    border-bottom: #2a2a2a 1px solid;
 }
 
-.left-column #close {
+.left-column #will {
+    padding: 3% 20% 15% 20%;
     text-align: center;
 }
 
 .right-column .red {
-    background-color: red;
+    background-color: #b2010a;
 }
 
 @media (max-width: 575px) {
@@ -141,6 +141,7 @@
     .content-square-right p {
         font-size: 2em;
     }
+
     .content-square-middle div {
         font-size: 1.25em;
     }
@@ -153,4 +154,9 @@
     .middle-column h4 {
         font-size: 0.85em;
     }
+
+     #state, #will{
+        font-size: 0.8em;
+    }
+
 }

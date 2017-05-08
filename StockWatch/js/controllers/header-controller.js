@@ -1,6 +1,6 @@
 import { htmlHandler } from 'htmlHandler';
 import { templateHandler } from 'templateHandler';
-import { firebaseDataBase } from 'firebase-database';
+import { userModel } from 'user-model';
 
 class HeaderController {
 
@@ -15,18 +15,8 @@ class HeaderController {
         htmlHandler.setHtml('footer', '#footer');
     }
 
-     checkLoggedIn() {
-        let user = firebaseDataBase.getCurrentUser();
-
-            if (user) {
-                return true;
-            } else {
-                return false;
-            }
-    }
-
     updateHeader() {
-        return templateHandler.setTemplate('header', '#header', { isLoggedIn: this.checkLoggedIn() });
+        return templateHandler.setTemplate('header', '#header', { isLoggedIn: userModel.isUserLoggedIn() });
     }
 }
 

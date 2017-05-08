@@ -8,10 +8,11 @@ class Router {
 
     start() {
         let sammy = null;
-        sammy = Sammy(function() {
+        sammy = Sammy(function () {
             this.before({}, () => {
                 headerController.initialize();
             });
+
             this.get('#/', (sammy) => sammy.redirect('#/home'));
             this.get('#/home', () => htmlHandler.setHtml('home', '#content'));
 
@@ -22,7 +23,7 @@ class Router {
             this.post('#/account/sign-in', accountController.signIn);
             this.post('#/account/sign-up', accountController.signUp);
 
-            this.get('#/account/portfolio', accountController.getPortfolio);
+            this.get('#/account/market-overview', accountController.getMarketOverview);
             this.get('#/account/watchlist', accountController.getWatchlist);
             this.get('#/account/news', accountController.getNews);
             this.get('#/account/user-settings', accountController.getUserSettings);
@@ -34,7 +35,7 @@ class Router {
             this.get('#/account/sign-out', accountController.signOut);
         });
 
-        $(function() {
+        $(function () {
             sammy.run('#/');
         });
     }

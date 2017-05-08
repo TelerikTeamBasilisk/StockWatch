@@ -1,18 +1,26 @@
-.tab-content .heading {
-    padding-top: 5.5%;
-    color: green;
+#settings h3 {
+    font-size: 20px;
+    padding: 20px 0 10px 0;
 }
 
-.row .form {
-    margin-top: 5%;
-    padding-top: 20px;
-    padding-bottom: 20px;
+#settings .form {
+    padding: 10px;
+    width: 50%;
 }
 
-.row label {
-    color: red;
+#settings label {
+    font-weight: bold;
+    font-style: italic; 
 }
 
-#save-changes {
+#settings select{
+    /*max-width: 300px;*/
+}
+
+#settings #save-changes {
     margin-bottom: 1.5%;
+}
+
+#settings hr{
+    border-bottom: 1px solid #2a2a2a;
 }

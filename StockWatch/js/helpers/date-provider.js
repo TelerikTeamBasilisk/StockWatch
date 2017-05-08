@@ -1,13 +1,18 @@
+import { stockData } from 'stockData';
+
 const time = (function () {
 
     function startTime() {
         let today = new Date();
-        let h = today.getHours();
-        let m = today.getMinutes();
-        let s = today.getSeconds();
-        m = formatOneDigitNumber(m);
-        s = formatOneDigitNumber(s);
+        let h = formatOneDigitNumber(today.getHours());
+        let m = formatOneDigitNumber(today.getMinutes());
+        let s = formatOneDigitNumber(today.getSeconds());
         $('#hour-minute').html(`${h}:${m}:${s}`);
+
+        let openClose = stockData.getOpeningClosingTime();
+        $('#state').html(`NASDAQ is ${openClose.State}.`);
+        $('#will').html(`${openClose.Will} in ${formatOneDigitNumber(openClose.Hours)}:${formatOneDigitNumber(openClose.Minutes)}:${formatOneDigitNumber(openClose.Seconds)}`);
+
         let t = setTimeout(startTime, 1000);
     }
 
@@ -27,9 +32,13 @@ const time = (function () {
         $('#date').html(`${day}/${month}/${year}`);
     }
 
+    function getCountDownToOpenClose() {
+
+    }
+
     return {
         startTime,
-        getDate
+        getDate,
     };
 }());
 export { time };

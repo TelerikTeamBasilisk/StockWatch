@@ -47,7 +47,7 @@ const firebaseDataBase = (function () {
     function removeFromWatchlist(userId, company) {
         return new Promise(resolve => {
             let companyToRemove = database.child('users').child(userId).child('watchlist').child(company);
-            movieToRemove.update({ 'company': [] });
+            companyToRemove.update({ 'company': [] });
 
             resolve(companyToRemove);
         });
