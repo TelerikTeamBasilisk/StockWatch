@@ -33,6 +33,7 @@ class Router {
             this.get('#/about', () => htmlHandler.setHtml('about', '#content'));
             this.get('#/contact', accountController.validateContactForm);
             this.post('#/newsletter', footerController.subscription);
+            this.post('#/contact', footerController.contact);
         });
 
         $(function() {
