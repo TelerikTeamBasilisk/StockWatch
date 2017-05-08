@@ -1,104 +1,79 @@
-//stats is data which must be obtained drom open Api
+import 'chart-js';
+const chartProvider = (function() {
 
-let stats = [
-    { value: 20, date: new Date("2011/11/30") },
-    { value: 40, date: new Date("2011/12/01") },
-    { value: 45, date: new Date("2011/12/02") },
-    { value: 50, date: new Date("2011/12/03") },
-    { value: 25, date: new Date("2011/12/04") },
-    { value: 30, date: new Date("2011/12/05") },
-    { value: 22, date: new Date("2011/12/06") },
-    { value: 40, date: new Date("2011/12/07") },
-    { value: 20, date: new Date("2011/12/08") },
-    { value: 40, date: new Date("2011/12/09") },
-    { value: 39, date: new Date("2011/12/10") },
-    { value: 32, date: new Date("2011/12/11") },
-    { value: 32, date: new Date("2011/12/12") },
-    { value: 45, date: new Date("2011/12/13") },
-    { value: 40, date: new Date("2011/12/14") },
-    { value: 40, date: new Date("2011/12/15") },
-    { value: 31, date: new Date("2011/12/16") },
-    { value: 30, date: new Date("2011/12/17") },
-    { value: 35, date: new Date("2011/12/18") },
-    { value: 22, date: new Date("2011/12/19") },
-    { value: 23, date: new Date("2011/12/20") },
-    { value: 21, date: new Date("2011/12/21") },
-    { value: 19, date: new Date("2011/12/22") },
-    { value: 28, date: new Date("2011/12/23") },
-    { value: 33, date: new Date("2011/12/24") },
-    { value: 37, date: new Date("2011/12/25") },
-    { value: 35, date: new Date("2011/12/26") },
-    { value: 33, date: new Date("2011/12/27") },
-    { value: 35, date: new Date("2011/12/28") },
-    { value: 41, date: new Date("2011/12/29") },
-    // { value: 35, date: new Date("2011/12/30") },
-    // { value: 29, date: new Date("2011/12/31") },
-    // { value: 45, date: new Date("2012/01/01") },
-    // { value: 45, date: new Date("2012/01/02") },
-    // { value: 42, date: new Date("2012/01/03") },
-    // { value: 30, date: new Date("2012/01/04") },
-    // { value: 30, date: new Date("2012/01/05") },
-    // { value: 30, date: new Date("2012/01/06") },
-    // { value: 44, date: new Date("2012/01/07") },
-    // { value: 43, date: new Date("2012/01/08") },
-    // { value: 39, date: new Date("2012/01/09") },
-    // { value: 31, date: new Date("2012/01/10") },
-    // { value: 39, date: new Date("2012/01/11") },
-    // { value: 40, date: new Date("2012/01/12") },
-    // { value: 39, date: new Date("2012/01/13") },
-    // { value: 34, date: new Date("2012/01/14") },
-    // { value: 41, date: new Date("2012/01/15") },
-    // { value: 31, date: new Date("2012/01/16") },
-    // { value: 27, date: new Date("2012/01/17") },
-    // { value: 45, date: new Date("2012/01/18") },
-    // { value: 53, date: new Date("2012/01/19") },
-    // { value: 51, date: new Date("2012/01/20") },
-    // { value: 31, date: new Date("2012/01/21") },
-    // { value: 27, date: new Date("2012/01/22") }
-];
+    let firstIndex = 'S&P 500',
+        secondIndex = 'Dow Jones';
 
+    let lineChartData = {
+        labels: ['Date 1', 'Date 2', 'Date 3', 'Date 4', 'Date 5', 'Date 6', 'Date 7', 'Date 8', 'Date 9', 'Date 10', 'Date 11', 'Date 12', 'Date 13', 'Date 14'], //data from API for the first and second chart X
+        datasets: [{
+            data: [20, 30, 54, 20, 40, 45, 60, 35, 42, 64, 50, 32, 14, 27], //data from API for the first chart Y
+            label: firstIndex,
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: 'rgba(75,192,192,1)',
+            borderWidth: 2,
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: 'rgba(75,192,192,1)',
+            pointBackgroundColor: 'rgba(255,255,255,0.5)',
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            lineTension: 0.2
+        }, {
+            data: [60, 10, 40, 30, 56, 30, 20, 25, 33, 44, 23, 53, 23, 21], //data from API for the second chart Y
+            label: secondIndex,
+            backgroundColor: 'rgba(26, 193, 21,0.4)',
+            borderColor: 'rgba(26, 193, 21,1)',
 
-class ChartProvider {
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: 'rgba(75,192,192,1)',
+            pointBackgroundColor: 'rgba(255,255,255,0.5)',
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            lineTension: 0.2,
+        }]
 
+    };
 
-    createChart() {
-            $("#line-chart").kendoChart({
-                title: {
-                    text: "Index overview"
-                },
-                dataSource: {
-                    data: stats
-                },
-                series: [{
-                    type: "line",
-                    aggregate: "avg",
-                    field: "value",
-                    categoryField: "date"
-                }],
-                categoryAxis: {
-                    baseUnit: "automatic"
+    function createChart() {
+        let canvas = $("#chart").get(0);
+        let ctx = canvas.getContext("2d");
+
+        let indexChart = new Chart(ctx, {
+            type: 'line',
+            data: lineChartData,
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
                 }
-            });
-        }
-        // chart is responsive after refresh
-
-
-    refresh() {
-        var chart = $("#line-chart").data("kendoChart"),
-            series = chart.options.series,
-            categoryAxis = chart.options.categoryAxis,
-            baseUnitInputs = $("input:radio[name=baseUnit]"),
-            aggregateInputs = $("input:radio[name=aggregate]");
-
-        for (var i = 0, length = series.length; i < length; i++) {
-            series[i].aggregate = aggregateInputs.filter(":checked").val();
-        };
-
-        categoryAxis.baseUnit = baseUnitInputs.filter(":checked").val();
-
-        chart.refresh();
+            }
+        });
+        return indexChart;
     }
-}
 
-const chartProvider = new ChartProvider();
+    return {
+        createChart
+    };
+
+}());
+
 export { chartProvider };

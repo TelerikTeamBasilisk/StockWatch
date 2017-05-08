@@ -22,8 +22,7 @@ class AccountController {
     getMarketOverview() {
         if (headerController.checkLoggedIn()) {
             htmlHandler.setHtml('marketOverview', '#content').then(() => {
-                chartProvider.createChart('#line-chart');
-                chartProvider.refresh();
+                chartProvider.createChart();
                 calendar.showCalendar();
             });
         } else {

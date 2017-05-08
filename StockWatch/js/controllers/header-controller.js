@@ -15,14 +15,14 @@ class HeaderController {
         htmlHandler.setHtml('footer', '#footer');
     }
 
-     checkLoggedIn() {
+    checkLoggedIn() {
         let user = firebaseDataBase.getCurrentUser();
 
-            if (user) {
-                return true;
-            } else {
-                return false;
-            }
+        if (user) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     updateHeader() {
