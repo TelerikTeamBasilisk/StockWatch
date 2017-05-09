@@ -16,8 +16,9 @@ class UserModel {
             .catch(error => Promise.reject(error));
     }
 
-     addToWatchlist() {
-            firebaseDataBase.addToWatchlist();
+     addToWatchlist(watchlist) {
+            let user = firebaseDataBase.getCurrentUser();
+            firebaseDataBase.addToWatchlist(user, watchlist);
     }
 }
 

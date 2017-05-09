@@ -1,4 +1,4 @@
-export const firebaseModule = (function () {
+ const firebaseModule = (function () {
 
     // Initialize Firebase
     var config = {
@@ -20,3 +20,5 @@ export const firebaseModule = (function () {
         auth
     };
 }());
+
+export { firebaseModule };

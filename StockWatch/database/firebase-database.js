@@ -41,16 +41,7 @@ const firebaseDataBase = (function () {
         });
     }
 
-    function addToWatchlist() {
-        let watchlist = {
-            companyOne: $('#sel1').val(),
-            companyTwo: $('#sel2').val(),
-            companyThree: $('#sel3').val(),
-            companyFour: $('#sel4').val(),
-        }
-
-        let user = getCurrentUser();
-
+    function addToWatchlist(user, watchlist) {
         database.ref('users/' + user.uid).child('watchlist').set(watchlist).catch(error =>{
                 console.log(error.message);
             });;
@@ -89,7 +80,7 @@ const firebaseDataBase = (function () {
 
             database.ref('subscriptions').push(email).catch(error =>{
                 console.log(error.message);
-            });;
+                });
         })
     }
 

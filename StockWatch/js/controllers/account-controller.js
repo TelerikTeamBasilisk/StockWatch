@@ -110,8 +110,14 @@ class AccountController {
     }
 
     addToWatchlist(sammy) {
-        const company = sammy.params.id;
-        userModel.addToWatchlist(company);
+        let watchlist = {
+            companyOne: $('#sel1').val(),
+            companyTwo: $('#sel2').val(),
+            companyThree: $('#sel3').val(),
+            companyFour: $('#sel4').val(),
+        }
+        
+        userModel.addToWatchlist(watchlist);
     }
 }
 
