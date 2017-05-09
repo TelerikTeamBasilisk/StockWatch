@@ -13,7 +13,7 @@ The application is to be further developed by adding features like
 * Adding other financial instruments: bonds, options, etc.
 
 ### Team Members
-The following team members were randomly chosen to participate in the team project assignment as **Team 'Elderberry'**:
+The following team members were randomly chosen to participate in the team project assignment as **Team 'Basilisk'**:
 
 | Name                     | *Username*              | *GitHub*                                                      |
 | -------------------------| ------------------------| --------------------------------------------------------------|
