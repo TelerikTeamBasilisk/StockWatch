@@ -3,19 +3,21 @@ const firebaseDataBase = (function () {
     const database = firebaseModule.database;
     const auth = firebaseModule.auth;
 
+    const defaultIndustry = 'Technology';
+    const initialWatchlist = {
+        companyOne: 'AAPL',
+        companyTwo: 'GOOGL',
+        companyThree: 'MSFT',
+        companyFour: 'FB',
+    };
+
     function createUserWithEmail(email, password, username) {
         return auth.createUserWithEmailAndPassword(email, password)
             .then(() => getCurrentUser())
             .then(user => {
-                let initialWatchlist = {
-                    companyOne: 'Google',
-                    companyTwo: 'Facebook',
-                    companyThree: 'Dell',
-                    companyFour: 'Amazon',
-                }
-
-                database.ref('users/' + user.uid).child('watchlist').set(initialWatchlist);
                 database.ref('users/' + user.uid).child('username').set(username);
+                database.ref('users/' + user.uid).child('industry').set(defaultIndustry);
+                database.ref('users/' + user.uid).child('watchlist').set(initialWatchlist);
             })
             .catch(error => Promise.reject(error));
     }
@@ -39,25 +41,21 @@ const firebaseDataBase = (function () {
         });
     }
 
-    function addToWatchlist(user, watchlist) {
-        database.ref('users/' + user.uid).child('watchlist').set(watchlist).catch(error =>{
-                console.log(error.message);
-            });;
+    function addToWatchlist(userId, watchlist) {
+        database.ref('users/' + userId).child('watchlist').set(watchlist).catch(error => {
+            console.log(error.message);
+        });
     }
 
     function getUsersWatchlist(userId) {
         return new Promise((resolve, reject) => {
-            let watchlist = database.child('users').child(userId).child('watchlist');
+            let watchlist = database.ref().child('users').child(userId).child('watchlist');
             watchlist.once('value', data => {
-                if (!data.val()) {
-                    reject({ heading: 'Empty', message: 'The watchlist is empty.' });
-                    return;
-                }
-
-                let dataKeys = Object.keys(data.val());
+                let dataValues = Object.values(data.val());
                 let companies = [];
-                dataKeys.forEach(key => {
-                    companies.push(key);
+
+                dataValues.forEach(value => {
+                    companies.push(value);
                 });
 
                 resolve(companies);
@@ -65,8 +63,24 @@ const firebaseDataBase = (function () {
         });
     }
 
+    function addUsersIndustry(userId, industry) {
+        database.ref('users/' + userId).child('industry').set(industry).catch(error => {
+            console.log(error.message);
+        });
+    }
+
+    function getUsersIndustry(userId) {
+        return new Promise((resolve, reject) => {
+            let industry = database.ref().child('users').child(userId).child('industry');
+            industry.once('value', data => {
+                resolve(data.val());
+            });
+        });
+    }
+
+
     function subscribe(email) {
-        let subscriptionList = database.ref('subscriptions').once('value').then(function (snapshot) {
+        database.ref('subscriptions').once('value').then(function (snapshot) {
             let list = snapshot.val();
 
             for (let key in list) {
@@ -76,23 +90,23 @@ const firebaseDataBase = (function () {
                 }
             }
 
-            database.ref('subscriptions').push(email).catch(error =>{
-                console.log(error.message);
-                });
-        })
-    }
-
-     function contact(name, email, message) {
-            let contactInfo = {
-                nameOfClient: name,
-                emailOfClient: email,
-                messageOfClient: message
-            }
-
-            database.ref('contact-us').push(contactInfo).catch(error =>{
+            database.ref('subscriptions').push(email).catch(error => {
                 console.log(error.message);
             });
-        }
+        });
+    }
+
+    function contact(name, email, message) {
+        let contactInfo = {
+            nameOfClient: name,
+            emailOfClient: email,
+            messageOfClient: message
+        };
+
+        database.ref('contact-us').push(contactInfo).catch(error => {
+            console.log(error.message);
+        });
+    }
 
     return {
         createUserWithEmail,
@@ -102,6 +116,8 @@ const firebaseDataBase = (function () {
         onAuthStateChanged,
         addToWatchlist,
         getUsersWatchlist,
+        addUsersIndustry,
+        getUsersIndustry,
         subscribe,
         contact
     };
