@@ -57,8 +57,8 @@ const chartProvider = (function () {
     function createChart(values) {
         let lineChartData = rearrangeData(values);
 
-        let canvas = $("#chart").get(0);
-        let ctx = canvas.getContext("2d");
+        let canvas = $('#chart').get(0);
+        let ctx = canvas.getContext('2d');
 
         let indexChart = new Chart(ctx, {
             type: 'line',

@@ -19,7 +19,7 @@ const stockData = (function () {
         startDate = time.buildDatesForYAHOO(startDate);
         endDate = time.buildDatesForYAHOO(endDate);
 
-        let url = `http://query.yahooapis.com/v1/public/yql?q=%20select%20*%20from%20yahoo.finance.historicaldata%20where%20symbol%20=%20%22${symbol}%22%20and%20startDate%20=%20%22${startDate}%22%20and%20endDate%20=%20%22${endDate}%22%20&format=json%20&diagnostics=false%20&env=store://datatables.org/alltableswithkeys%20&callback=`;
+        let url = `https://query.yahooapis.com/v1/public/yql?q=%20select%20*%20from%20yahoo.finance.historicaldata%20where%20symbol%20=%20%22${symbol}%22%20and%20startDate%20=%20%22${startDate}%22%20and%20endDate%20=%20%22${endDate}%22%20&format=json%20&diagnostics=false%20&env=store://datatables.org/alltableswithkeys%20&callback=`;
 
         return new Promise((resolve, reject) => {
             $.getJSON(url).
