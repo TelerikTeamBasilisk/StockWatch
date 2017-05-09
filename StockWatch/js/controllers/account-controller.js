@@ -50,9 +50,7 @@ class AccountController {
     }
 
     getUserSettings() {
-        htmlHandler.setHtml('user-settings', '#content').then(() => {
-            console.log('User-settings are loaded');
-        });
+        htmlHandler.setHtml('user-settings', '#content').then(() => {});
     }
 
     validateContactForm() {
