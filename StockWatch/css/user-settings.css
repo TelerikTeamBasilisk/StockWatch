@@ -10,13 +10,19 @@
 
 #settings label {
     font-weight: bold;
-    font-style: italic; 
+    font-style: italic;
 }
 
 #settings #save-changes {
     margin-bottom: 1.5%;
 }
 
-#settings hr{
+#settings hr {
     border-bottom: 1px solid #2a2a2a;
+}
+
+#save-changes-message {
+    color: green;
+    font-weight: 800;
+    padding-bottom: 1%;
 }
