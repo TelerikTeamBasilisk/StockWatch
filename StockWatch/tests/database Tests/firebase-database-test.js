@@ -18,11 +18,13 @@ describe('Firebase-database Tests', () => {
             currentUserStub = sinon.stub(firebaseDataBase, 'getCurrentUser');
             setUsernameStub =  sinon.stub(firebaseModule.database.ref('users/testID').child('username'), 'set');
             setWatchlistStub = sinon.stub(firebaseModule.database.ref('users/testID').child('watchlist'), 'set');
+            setIndustryStub = sinon.stub(firebaseModule.database.ref('users/testUI').child('industry'), 'set');
         });
         afterEach(() => {
             currentUserStub.restore();
             setUsernameStub.restore();
             setWatchlistStub.restore();
+            setIndustryStub.restore();
         });
 
         it('expect createUserWithEmail to call createUserWithEmailAndPassword', (done) => {
@@ -39,8 +41,9 @@ describe('Firebase-database Tests', () => {
 
         it('expect createUserWithEmail to send information to database about watchlst', (done) => {
             currentUserStub.returns({uid:'testID'});
-            setWatchlistStub.returns(Promise.resolve());
-            setUsernameStub.returns(Promise.resolve());
+            setWatchlistStub.returns(Promise.reject());
+            setUsernameStub.returns(Promise.reject());
+            setIndustryStub.returns(Promise.reject())
 
             firebaseDataBase.createUserWithEmail(email, password, name);
             done();
@@ -52,11 +55,24 @@ describe('Firebase-database Tests', () => {
             currentUserStub.returns({uid:'testID'});
             setWatchlistStub.returns(Promise.reject());
             setUsernameStub.returns(Promise.reject());
+            setIndustryStub.returns(Promise.reject())
 
             firebaseDataBase.createUserWithEmail(email, password, name);
             done();
 
             expect(setUsernameStub.set).to.have.been.calledOnce();
+        });
+
+          it('expect createUserWithEmail to send information to database about industry', (done) => {
+            currentUserStub.returns({uid:'testID'});
+            setWatchlistStub.returns(Promise.reject());
+            setUsernameStub.returns(Promise.reject());
+            setIndustryStub.returns(Promise.reject())
+
+            firebaseDataBase.createUserWithEmail(email, password, name);
+            done();
+
+            expect(setIndustryStub.set).to.have.been.calledOnce();
         });
     });
 
@@ -93,12 +109,28 @@ describe('Firebase-database Tests', () => {
             sinon.stub(firebaseDataBase, 'getCurrentUser').returns({uid:'testID'});
             sinon.stub(firebaseModule.database.ref('users/' + firebaseDataBase.getCurrentUser().uid).child('watchlist'), 'set').returns(Promise.reject());
 
-            firebaseDataBase.addToWatchlist(firebaseDataBase.getCurrentUser(), {test: 'testWatchList'});
+            firebaseDataBase.addToWatchlist(firebaseDataBase.getCurrentUser().uid, {test: 'testWatchList'});
             done();
 
-            expect(firebaseModule.database.ref('users/' + firebaseDataBase.getCurrentUser().uid).child('watchlist').set).to.have.been.calledOnce();
+            firebaseDataBase.getCurrentUser.restore();
 
+            expect(firebaseModule.database.ref('users/' + firebaseDataBase.getCurrentUser().uid).child('watchlist').set).to.have.been.calledOnce();
+            
             firebaseModule.database.ref('users/' + firebaseDataBase.getCurrentUser().uid).child('watchlist').set.restore();
+        });
+    });
+
+    describe('addUsersIndustry Tests', () => {
+        it('addUsersIndustry should send information to database', (done) => {
+            sinon.stub(firebaseDataBase, 'getCurrentUser').returns({uid:'testID'});
+            sinon.stub(firebaseModule.database.ref('users/userID').child('industry'), 'set').returns(Promise.reject());
+            
+            firebaseDataBase.addUsersIndustry(firebaseDataBase.getCurrentUser().uid, 'sample industry');
+            done();
+
+            expect(firebaseModule.database.ref('users/userID').set).to.have.been.calledOnce();
+
+            firebaseModule.database.ref('users/userID').child('industry').set.restore();
             firebaseDataBase.getCurrentUser.restore();
         });
     });
