@@ -15,12 +15,12 @@ The application is to be further developed by adding features like
 ### Team Members
 The following team members were randomly chosen to participate in the team project assignment as **Team 'Elderberry'**:
 
-| Name                     | *Username*              |
-| -------------------------| ------------------------|
-| Milena Sapunova          | *milena.aleksandrova*   |
-| Peter Georgiev           | *peter_85*              |
-| Emiliyan Panagyurski     | *EmiliyanPanagyurski*   |
-
+| Name                     | *Username*              | *GitHub*                                                      |
+| -------------------------| ------------------------| --------------------------------------------------------------|
+| Milena Sapunova          | *milena.aleksandrova*   | [pokemon4e](https://github.com/pokemon4e)                     |
+| Peter Georgiev           | *peter_85*              | [peter-85](https://github.com/peter-85)                       | 
+| Emiliyan Panagyurski     | *EmiliyanPanagyurski*   | [EmiliyanPanagyurski](https://github.com/EmiliyanPanagyurski) |
+ 
 ### Project Purpose:
 After successfully registering on StockWatch, the user is presented with the user settings. He can choose his industry of interest and four companies he is particularly interested in. One can follow those companies and industry in the Watchlist tab. There the users sees the current time and the time left until open/close of the [NASDAQ](http://www.nasdaq.com/).
 
@@ -32,12 +32,12 @@ In the News tab one can see the last 10 news from Bloomberg. There is an option 
 
 
 ### Screenshots		   
-<img align="center" width=300px src="resources/imgs/team.JPG">
-<img align="center" width=300px src="resources/imgs/home.JPG"> 
-<img align="center" width=300px src="resources/imgs/market-overview.JPG"">  
-<img align="center" width=300px src="resources/imgs/watchlist.JPG"> 
-<img align="center" width=300px src="resources/imgs/news.jpg"> 
-<img align="center" width=300px src="resources/imgs/user-settings.JPG"> 
+<img width=300px src="resources/imgs/team.JPG">
+<img width=300px src="resources/imgs/home.JPG"> 
+<img width=300px src="resources/imgs/market-overview.JPG"">  
+<img width=300px src="resources/imgs/watchlist.JPG"> 
+<img width=300px src="resources/imgs/news.jpg"> 
+<img width=300px src="resources/imgs/user-settings.JPG"> 
  
 ### URLs
 [**Live Demo**](https://stock-watch-eab0d.firebaseapp.com/)
