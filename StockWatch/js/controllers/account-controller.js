@@ -46,9 +46,29 @@ class AccountController {
 
     getWatchlist(sammy) {
         if (userModel.isUserLoggedIn()) {
-            templateHandler.setTemplate('watchlist', '#content', {}).then(() => {
-                time.startTime();
-                time.getDate();
+            userModel.getUsersIndustry().then((industry) => {
+                stockData.get10Largest(industry).then((companies) => {
+                    userModel.getUsersWatchlist().then((tickers) => {
+                        let promises = [];
+                        tickers.forEach((ticker) => { promises.push(stockData.getPriceChange(ticker)); });
+
+                        Promise.all(promises).then((values) => {
+                            let leftColumn = [values[0], values[2]];
+                            let rightColumn = [values[1], values[3]];
+                            templateHandler.setTemplate('watchlist', '#content', { companies: companies, leftColumn: leftColumn, rightColumn: rightColumn }).then(() => {
+                                $.each($('.change'), (i, item) => {
+                                    let $item = $(item);
+                                    if (+$item.html() < 0) {
+                                        $item.parent().parent().parent().addClass('red');
+                                    }
+                                });
+
+                                time.startTime();
+                                time.getDate();
+                            });
+                        });
+                    });
+                });
             });
         } else {
             sammy.redirect('#/home');
@@ -117,8 +137,18 @@ class AccountController {
     }
 
     addToWatchlist(sammy) {
-        const company = sammy.params.id;
-        userModel.addToWatchlist(company);
+
+        let watchlist = {
+            companyOne: sammy.params.firstCompany,
+            companyTwo: sammy.params.secondCompany,
+            companyThree: sammy.params.thirdCompany,
+            companyFour: sammy.params.fourthCompany,
+        };
+
+        let industry = sammy.params.industry;
+
+        userModel.addToWatchlist(watchlist);
+        userModel.addUsersIndustry(industry);
     }
 }
 

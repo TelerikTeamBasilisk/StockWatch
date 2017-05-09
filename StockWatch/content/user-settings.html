@@ -1,7 +1,5 @@
 <link rel="stylesheet" type="text/css" href="./css/user-settings.css">
-
 <link rel="stylesheet" type="text/css" href="./css/account-tabs.css">
-<link rel="stylesheet" type="text/css" href="./css/watchlist.css">
 
 <div id="tabs" class="container">
     <!-- Nav tabs -->
@@ -11,87 +9,89 @@
         </li>
     </ul>
     <div class="tab-content container" id="settings">
-        <div class="industry-choice">
-            <div class="row">
-                <div class="col-md-6 form">
-                    <h3 class="text-center">Choose industry for your watchlist</h3>
-                    <label for="industry">Industry</label>
-                    <select class="form-control" id="industry">
-                        <option>Basic Industries</option>
-                        <option>Capital Goods</option>
-                        <option>Consumer Goods</option>
-                        <option>Consumer Non-Durables</option>
-                        <option>Consumer Services</option>
-                        <option>Energy</option>
-                        <option>Finance</option>
-                        <option>Healthcare</option>
-                        <option>Miscellaneous</option>
-                        <option>Public Utilities</option>
-                        <option>Technology</option>
-                        <option>Transportation</option>
+        <form action="#/account/add-to-watchlist" id="settings-form" method="post">
+            <div class="industry-choice">
+                <h3 class="text-center">Choose industry for your watchlist</h3>
+                <div class="row">
+                    <div class="col-md-6 form">
+                        <label for="industry">Industry</label>
+                        <select class="form-control" id="industry" name="industry">
+                            <option>Basic Industries</option>
+                            <option>Capital Goods</option>
+                            <option>Consumer Goods</option>
+                            <option>Consumer Non-Durables</option>
+                            <option>Consumer Services</option>
+                            <option>Energy</option>
+                            <option>Finance</option>
+                            <option>Healthcare</option>
+                            <option>Miscellaneous</option>
+                            <option>Public Utilities</option>
+                            <option>Technology</option>
+                            <option>Transportation</option>
+                      </select>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="companies">
+                <h3 class="text-center">Select four companies for your watchlist</h3>
+                <div class="row">
+                    <div class="col-md-6 form">
+                        <label for="sel1">First company</label>
+                        <select class="form-control" id="sel1" name="firstCompany">
+                            <option>Google</option>
+                            <option>Amazon</option>
+                            <option>Dell</option>
+                            <option>Facebook</option>
+                            <option>Google</option>
+                            <option>Amazon</option>
+                            <option>Dell</option>
+                            <option>Facebook</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 form">
+                        <label for="sel2">Second company</label>
+                        <select class="form-control" id="sel2" name="secondCompany">
+                            <option>Google</option>
+                            <option>Amazon</option>
+                            <option>Dell</option>
+                            <option>Facebook</option>
+                            <option>Google</option>
+                            <option>Amazon</option>
+                            <option>Dell</option>
+                            <option>Facebook</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 form">
+                        <label for="sel3">Third company</label>
+                        <select class="form-control" id="sel3" name="thirdCompany">
+                            <option>Google</option>
+                            <option>Amazon</option>
+                            <option>Dell</option>
+                            <option>Facebook</option>
+                            <option>Google</option>
+                            <option>Amazon</option>
+                            <option>Dell</option>
+                            <option>Facebook</option>
                     </select>
+                    </div>
+                    <div class="col-md-6 form">
+                        <label for="sel4">Fourth company</label>
+                        <select class="form-control" id="sel4" name="fourthCompany">
+                            <option>Google</option>
+                            <option>Amazon</option>
+                            <option>Dell</option>
+                            <option>Facebook</option>
+                            <option>Google</option>
+                            <option>Amazon</option>
+                            <option>Dell</option>
+                            <option>Facebook</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr>
-        <div class="companies">
-            <h3 class="text-center">Select four companies for your watchlist</h3>
-            <div class="row">
-                <div class="col-md-6 form">
-                    <label for="sel1">First company</label>
-                    <select class="form-control" id="sel1">
-                    <option>Google</option>
-                    <option>Amazon</option>
-                    <option>Dell</option>
-                    <option>Facebook</option>
-                    <option>Google</option>
-                    <option>Amazon</option>
-                    <option>Dell</option>
-                    <option>Facebook</option>
-                </select>
-                </div>
-                <div class="col-md-6 form">
-                    <label for="sel2">Second company</label>
-                    <select class="form-control" id="sel2">
-                    <option>Google</option>
-                    <option>Amazon</option>
-                    <option>Dell</option>
-                    <option>Facebook</option>
-                    <option>Google</option>
-                    <option>Amazon</option>
-                    <option>Dell</option>
-                    <option>Facebook</option>
-             </select>
-                </div>
-                <div class="col-md-6 form">
-                    <label for="sel3">Third company</label>
-                    <select class="form-control" id="sel3">
-                    <option>Google</option>
-                    <option>Amazon</option>
-                    <option>Dell</option>
-                    <option>Facebook</option>
-                    <option>Google</option>
-                    <option>Amazon</option>
-                    <option>Dell</option>
-                    <option>Facebook</option>
-              </select>
-                </div>
-                <div class="col-md-6 form">
-                    <label for="sel4">Fourth company</label>
-                    <select class="form-control" id="sel4">
-                    <option>Google</option>
-                    <option>Amazon</option>
-                    <option>Dell</option>
-                    <option>Facebook</option>
-                    <option>Google</option>
-                    <option>Amazon</option>
-                    <option>Dell</option>
-                    <option>Facebook</option>
-                 </select>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <a id="save-changes" class="btn btn-md btn-info" href="#/account/add-to-watchlist">Save changes</a>
+            <hr>
+            <button type="submit" id="save-changes" class="btn btn-md btn-info">Save changes</button>
+        </form>
     </div>
 </div>

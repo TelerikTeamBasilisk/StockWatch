@@ -5,10 +5,8 @@ import { accountController } from 'accountController';
 
 class Router {
 
-
     start() {
-        let sammy = null;
-        sammy = Sammy(function () {
+        let sammy = Sammy(function () {
             this.before({}, () => {
                 headerController.initialize();
             });
@@ -23,7 +21,8 @@ class Router {
             this.post('#/account/sign-in', accountController.signIn);
             this.post('#/account/sign-up', accountController.signUp);
 
-            this.get('#/account/add-to-watchlist', accountController.addToWatchlist);
+            this.post('#/account/add-to-watchlist', accountController.addToWatchlist);
+
             this.get('#/account/sign-out', accountController.signOut);
             this.get('#/account/market-overview', accountController.getMarketOverview);
             this.get('#/account/watchlist', accountController.getWatchlist);

@@ -38,7 +38,7 @@ const stockData = (function () {
                 .done((data) => {
                     let text = data.query.results.body;
                     let obj = $.parseJSON(text.replace('\n// ', ''))[0];
-                    let stock = { Price: obj.l, Change: obj.c };
+                    let stock = { Ticker: symbol, Price: obj.l, Change: obj.c };
                     resolve(stock);
                 })
                 .fail(reject);
@@ -91,7 +91,8 @@ const stockData = (function () {
 
     function get10Largest(industry) {
         if (!industries[industry]) {
-            return getAllCompaniesInIndustry(industry).then(() => getCompaniesSortedByMarketCap(industry));
+            return getAllCompaniesInIndustry(industry)
+                .then(() => getCompaniesSortedByMarketCap(industry));
         }
         else {
             return Promise.resolve(getCompaniesSortedByMarketCap(industry));
@@ -106,11 +107,11 @@ const stockData = (function () {
 
         for (let i = 0; i < selected.length; i++) {
             let comp = selected[i];
-            let priceChange = getPriceChange(comp.Ticker);
-            comp.Price = priceChange.Price;
-            comp.Change = priceChange.Change;
+            getPriceChange(comp.Ticker).then((priceChange) => {
+                comp.Price = priceChange.Price;
+                comp.Change = priceChange.Change;
+            });
         }
-
         return selected;
     }
 
@@ -128,9 +129,9 @@ const stockData = (function () {
                         let splitted = lines[i].split('","');
                         if (splitted[0] && splitted[0].replace('"', '')) {
                             let ticker = splitted[0].replace('"', '');
-                            let companyName = splitted[1].replace('"', '');
+                            let name = splitted[1].replace('"', '');
                             let marketCap = +splitted[3].replace('"', '');
-                            industries[industry].push(new Company(ticker, companyName, marketCap));
+                            industries[industry].push(new Company(ticker, name, marketCap));
                         }
                     }
                     resolve(industries[industry]);
@@ -155,9 +156,9 @@ const stockData = (function () {
 }());
 
 class Company {
-    constructor(ticker, companyName, marketCap, price, change) {
+    constructor(ticker, name, marketCap, price, change) {
         this.Ticker = ticker;
-        this.CompanyName = companyName;
+        this.Name = name;
         this.MarketCap = marketCap;
         this.Price = price;
         this.Change = change;

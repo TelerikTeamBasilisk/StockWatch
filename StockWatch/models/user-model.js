@@ -16,8 +16,24 @@ class UserModel {
             .catch(error => Promise.reject(error));
     }
 
-    addToWatchlist() {
-        firebaseDataBase.addToWatchlist();
+    addToWatchlist(watchlist) {
+        let user = firebaseDataBase.getCurrentUser();
+        firebaseDataBase.addToWatchlist(user.uid, watchlist);
+    }
+
+    getUsersWatchlist() {
+        let user = firebaseDataBase.getCurrentUser();
+        return firebaseDataBase.getUsersWatchlist(user.uid);
+    }
+
+    addUsersIndustry(industry) {
+        let user = firebaseDataBase.getCurrentUser();
+        firebaseDataBase.addUsersIndustry(user.uid, industry);
+    }
+
+    getUsersIndustry() {
+        let user = firebaseDataBase.getCurrentUser();
+        return firebaseDataBase.getUsersIndustry(user.uid);
     }
 
     isUserLoggedIn() {

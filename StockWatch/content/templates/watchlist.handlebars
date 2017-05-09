@@ -36,86 +36,40 @@
                 <div class="square-middle">
                     <div class="content-square-middle">
                         <h4 class="text-center">Stocks</h4>
+                        {{#each companies}}
                         <div class="align-left">
-                            <div> Google</div>
-                            <div>Dell Inc.</div>
-                            <div>Google Inc.</div>
-                            <div>Cicso</div>
-                            <div>Yahoo! Inc.</div>
-                            <div>Siemens N</div>
-                            <div>Zynga Inc.</div>
-                            <div>Siemens N</div>
-                            <div>Ebay Inc.</div>
-                            <div>Cicso</div>
-                            <div>Amazon</div>
-                            <div> Google</div>
-                            <div>Dell Inc.</div>
-                            <div>Google Inc.</div>
-                            <div>Cicso</div>
-                            <div>Siemens N</div>
-                            <div>Ebay Inc.</div>
+                            <div> {{Ticker}}</div>
                         </div>
                         <div class="align-right text-right">
-                            <div>85.97</div>
-                            <div>54.95</div>
-                            <div>85.88</div>
-                            <div>420.68</div>
-                            <div>54.85</div>
-                            <div>84.98</div>
-                            <div>35.28</div>
-                            <div>95.65</div>
-                            <div>250.21</div>
-                            <div>100.25</div>
-                            <div>35.28</div>
-                            <div>52.65</div>
-                            <div>250.21</div>
-                            <div>35.28</div>
-                            <div>52.65</div>
-                            <div>250.21</div>
-                            <div>52.65</div>
+                            <div>${{Price}}</div>
                         </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-3 col-sm-6 right-column">
-
+                {{#each leftColumn}}
                 <div class="square-right">
                     <div class="content-square-right">
-                        <p class="company-name">APPLE</p>
-                        <p class="index">465.67</p>
-                        <p>10%</p>
+                        <p class="company-name">{{Ticker}}</p>
+                        <p class="index">{{Price}}</p>
+                        <p><span class="change">{{Change}}</span>%</p>
                     </div>
                 </div>
-                <div class="square-right red">
-                    <div class="content-square-right">
-                        <p class="company-name">GOOGLE</p>
-                        <p class="index">125.23</p>
-                        <p>-5%</p>
-                    </div>
-                </div>
+                {{/each}}
             </div>
-
-
             <div class="col-12 col-md-3 col-sm-6 right-column">
+                {{#each rightColumn}}
                 <div class="square-right">
                     <div class="content-square-right">
-                        <p class="company-name">AMAZON</p>
-                        <p class="index">414.44</p>
-                        <p>+10%</p>
+                        <p class="company-name">{{Ticker}}</p>
+                        <p class="index">{{Price}}</p>
+                        <p class="change"><span class="change">{{Change}}</span>%</p>
                     </div>
                 </div>
-                <div class="square-right">
-                    <div class="content-square-right">
-                        <p class="company-name">TESLA</p>
-                        <p class="index">54.68</p>
-                        <p>+6.4%</p>
-                    </div>
-                </div>
+                {{/each}}
             </div>
-
         </div>
     </div>
-
-</div>
 </div>
