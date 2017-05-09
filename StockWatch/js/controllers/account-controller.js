@@ -14,8 +14,7 @@ class AccountController {
                 .then(() => showModal('#signin-modal', sammy))
                 .then(() => validator.validateSignIn());
             hideHeaderFooter();
-        }
-        else {
+        } else {
             sammy.redirect('#/account/market-overview');
         }
     }
@@ -26,8 +25,7 @@ class AccountController {
                 .then(() => showModal('#signup-modal', sammy))
                 .then(() => validator.validateSignUp());
             hideHeaderFooter();
-        }
-        else {
+        } else {
             sammy.redirect('#/account/market-overview');
         }
     }
@@ -59,8 +57,7 @@ class AccountController {
                 });
             });
 
-        }
-        else {
+        } else {
             sammy.redirect('#/home');
         }
     }
@@ -121,7 +118,6 @@ class AccountController {
                         companies.find((x) => x.Ticker === tickers[1]).secondCompany = true;
                         companies.find((x) => x.Ticker === tickers[2]).thirdCompany = true;
                         companies.find((x) => x.Ticker === tickers[3]).fourthCompany = true;
-
                         templateHandler.setTemplate('user-settings', '#content', { companies: companies }).then(() => {
                             $('#industry option').each((i, item) => {
                                 let $item = $(item);
@@ -129,7 +125,7 @@ class AccountController {
                                     $item.attr('selected', 'selected');
                                 }
                             })
-                        });
+                        }).then(() => saveChangesMessage());
                     });
                 });
             });
@@ -218,7 +214,7 @@ function showHeaderFooter() {
 }
 
 function onModalClose(identifier, sammy, redirect) {
-    $(identifier).on('hidden.bs.modal', function () {
+    $(identifier).on('hidden.bs.modal', function() {
         sammy.redirect(redirect);
         showHeaderFooter();
     });
@@ -239,6 +235,16 @@ function updateChart() {
     Promise.all(promises).then((values) => {
         chartProvider.createChart(values);
     });
+}
+
+function saveChangesMessage() {
+    let showMessage =
+        $('#save-changes').on('click', () => {
+            let $divMsg = $("<div>", { id: "save-changes-message" });
+            $divMsg.text('Your changes are saved! You can move to watch list.')
+            $('#settings-form').append($divMsg);
+        });
+    return showMessage
 }
 
 const accountController = new AccountController();
