@@ -10,6 +10,21 @@ describe('Firebase-database Tests', () => {
     let message = 'sample message';
 
     describe('createUserWithEmail Tests', () => {
+        let currentUserStub,
+            setUsernameStub,
+            setWatchlistStub;
+
+        beforeEach(() => {
+            currentUserStub = sinon.stub(firebaseDataBase, 'getCurrentUser');
+            setUsernameStub =  sinon.stub(firebaseModule.database.ref('users/testID').child('username'), 'set');
+            setWatchlistStub = sinon.stub(firebaseModule.database.ref('users/testID').child('watchlist'), 'set');
+        });
+        afterEach(() => {
+            currentUserStub.restore();
+            setUsernameStub.restore();
+            setWatchlistStub.restore();
+        });
+
         it('expect createUserWithEmail to call createUserWithEmailAndPassword', (done) => {
             sinon.stub(firebaseModule.auth, 'createUserWithEmailAndPassword').returns(Promise.reject());
 
@@ -21,6 +36,28 @@ describe('Firebase-database Tests', () => {
 
             firebaseModule.auth.createUserWithEmailAndPassword.restore();
         });
+
+        it('expect createUserWithEmail to send information to database about watchlst', (done) => {
+            currentUserStub.returns({uid:'testID'});
+            setWatchlistStub.returns(Promise.resolve());
+            setUsernameStub.returns(Promise.resolve());
+
+            firebaseDataBase.createUserWithEmail(email, password, name);
+            done();
+
+            expect(setWatchlistStub.set).to.have.been.calledOnce();
+        });
+
+        it('expect createUserWithEmail to send information to database about username', (done) => {
+            currentUserStub.returns({uid:'testID'});
+            setWatchlistStub.returns(Promise.reject());
+            setUsernameStub.returns(Promise.reject());
+
+            firebaseDataBase.createUserWithEmail(email, password, name);
+            done();
+
+            expect(setUsernameStub.set).to.have.been.calledOnce();
+        });
     });
 
     describe('signInWithEmail Tests', () => {
@@ -29,7 +66,7 @@ describe('Firebase-database Tests', () => {
 
             firebaseDataBase.signInWithEmail(email, password)
                 .then(() => {
-                    expect(firebaseModule.auth.signInWithEmailAndPassword(email, password)).to.have.been.calledOnce()
+                    expect(firebaseModule.auth.signInWithEmailAndPassword).to.have.been.calledOnce()
                 })
                 .then(done, done);
 
@@ -63,16 +100,16 @@ describe('Firebase-database Tests', () => {
 
             firebaseModule.database.ref('users/' + firebaseDataBase.getCurrentUser().uid).child('watchlist').set.restore();
             firebaseDataBase.getCurrentUser.restore();
-        })
-    })
+        });
+    });
 
     describe('Subscribe Tests', () =>{
         let onceStub,
             pushStub;
 
         beforeEach(() => {
-            onceStub = sinon.stub(firebaseModule.database.ref('subscriptions'), 'once').returns(Promise.reject());
-            pushStub = sinon.stub(firebaseModule.database.ref('subscriptions'), 'push').returns(Promise.reject());
+            onceStub = sinon.stub(firebaseModule.database.ref('subscriptions'), 'once');
+            pushStub = sinon.stub(firebaseModule.database.ref('subscriptions'), 'push');
         });
         afterEach(() => {
             onceStub.restore();
@@ -110,8 +147,8 @@ describe('Firebase-database Tests', () => {
             expect(firebaseModule.database.ref('contact-us').push).to.have.been.calledOnce();
 
             firebaseModule.database.ref('contact-us').push.restore();
-        })
-    })
+        });
+    });
 });
 
 mocha.run();

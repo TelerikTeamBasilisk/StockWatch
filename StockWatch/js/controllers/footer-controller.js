@@ -20,5 +20,5 @@ class FooterController{
     }
 }
 
-let footerController = new FooterController();
+const footerController = new FooterController();
 export { footerController };

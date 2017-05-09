@@ -13,7 +13,7 @@ describe('User Model Tests', () => {
             userModel.signIn(email, password);
             done();
 
-            expect(firebaseDataBase.signIn).to.have.been.calledOnce();
+            expect(firebaseDataBase.signInWithEmail).to.have.been.calledOnce();
 
             firebaseDataBase.signInWithEmail.restore();
         });
