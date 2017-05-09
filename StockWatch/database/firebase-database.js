@@ -94,13 +94,8 @@ const firebaseDataBase = (function () {
 
             database.ref('subscriptions').push(email).catch(error => {
                 console.log(error.message);
-<<<<<<< HEAD
             });
         });
-=======
-                });
-        })
->>>>>>> 26f62c905a939a2301d028f68ce05690f9718c58
     }
 
     function contact(name, email, message) {
