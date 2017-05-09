@@ -32,12 +32,12 @@ In the News tab one can see the last 10 news from Bloomberg. There is an option 
 
 
 ### Screenshots		   
-<img align="center" width=300px src="resources/imgs/team.jpg">
-<img align="center" width=300px src="resources/imgs/home.jpg"> 
-<img align="center" width=300px src="resources/imgs/market-overview.jpg"">  
-<img align="center" width=300px src="resources/imgs/watchlist.jpg"> 
+<img align="center" width=300px src="resources/imgs/team.JPG">
+<img align="center" width=300px src="resources/imgs/home.JPG"> 
+<img align="center" width=300px src="resources/imgs/market-overview.JPG"">  
+<img align="center" width=300px src="resources/imgs/watchlist.JPG"> 
 <img align="center" width=300px src="resources/imgs/news.jpg"> 
-<img align="center" width=300px src="resources/imgs/user-settings.jpg"> 
+<img align="center" width=300px src="resources/imgs/user-settings.JPG"> 
  
 ### URLs
 [**Live Demo**](https://stock-watch-eab0d.firebaseapp.com/)
