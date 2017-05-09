@@ -26,6 +26,25 @@ const time = (function () {
         $('#date').html(`${day}/${month}/${year}`);
     }
 
+    function buildDatesForDatePicker(date) {
+        let dd = formatOneDigitNumber(date.getDate());
+        let mm = formatOneDigitNumber(date.getMonth() + 1);
+
+        return `${mm}/${dd}/${date.getFullYear()}`;
+    }
+
+    function getDateFromDatePicker(str) {
+        let inputs = str.split('/');
+        return new Date(+inputs[2], +inputs[0], +inputs[1]);
+    }
+
+    function buildDatesForYAHOO(date) {
+        let dd = formatOneDigitNumber(date.getDate());
+        let mm = formatOneDigitNumber(date.getMonth() + 1);
+
+        return `${date.getFullYear()}-${mm}-${dd}`;
+    }
+
     // add zero in front of numbers < 10
     function formatOneDigitNumber(i) {
         if (i < 10) {
@@ -37,6 +56,9 @@ const time = (function () {
     return {
         startTime,
         getDate,
+        buildDatesForDatePicker,
+        getDateFromDatePicker,
+        buildDatesForYAHOO,
     };
 }());
 export { time };

@@ -1,3 +1,5 @@
+import { time } from 'time';
+
 const stockData = (function () {
     let industries = [];
 
@@ -12,20 +14,24 @@ const stockData = (function () {
         });
     }
 
-    function getHistoricalPrices(symbol, startDate, endDate) {
-
+    function getHistoricalPrices(symbol, ticker, startDate, endDate) {
         // date in the format 
-        let base = `http://query.yahooapis.com/v1/public/yql?q=%20select%20*%20from%20yahoo.finance.historicaldata%20where%20symbol%20=%20%22${symbol}%22%20and%20startDate%20=%20%22${startDate}%22%20and%20endDate%20=%20%22${endDate}%22%20&format=json%20&diagnostics=false%20&env=store://datatables.org/alltableswithkeys%20&callback=`;
+        startDate = time.buildDatesForYAHOO(startDate);
+        endDate = time.buildDatesForYAHOO(endDate);
+
+        let url = `http://query.yahooapis.com/v1/public/yql?q=%20select%20*%20from%20yahoo.finance.historicaldata%20where%20symbol%20=%20%22${symbol}%22%20and%20startDate%20=%20%22${startDate}%22%20and%20endDate%20=%20%22${endDate}%22%20&format=json%20&diagnostics=false%20&env=store://datatables.org/alltableswithkeys%20&callback=`;
+
         return new Promise((resolve, reject) => {
-            $.getJSON(base).
+            $.getJSON(url).
                 done((data) => {
                     let allData = data.query.results.quote;
                     let prices = [];
+                    let dates = [];
                     allData.forEach((x) => {
-                        let dataPoint = { Date: x.Date, Price: x.Close };
-                        prices.push(dataPoint);
+                        dates.push(x.Date);
+                        prices.push(+((+x.Close).toFixed(2)));
                     });
-                    resolve(prices);
+                    resolve({ Ticker: ticker, Dates: dates, Prices: prices });
                 })
                 .fail(reject);
         });

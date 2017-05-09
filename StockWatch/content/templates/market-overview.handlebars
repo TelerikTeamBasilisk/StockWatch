@@ -21,30 +21,21 @@
     <div class="tab-content">
         <div class="row">
             <div class="col-lg-3 col-sm-6">
-                <label for="sel1">Stock Index 1</label>
+                <label for="sel1">Benchmark</label>
                 <select class="form-control" id="sel1">
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
+                    <option value="^GSPC">S&P 500</option>
+                    <option value="^DJI"> Dow Jones</option>
+                    <option value="^IXIC">NASDAQ Composite</option>
+                    <option value="^RUT">Russell 2000</option>
                  </select>
             </div>
 
             <div class="col-lg-3 col-sm-6">
-                <label for="sel2">Stock Index 2</label>
+                <label for="sel2">Stock</label>
                 <select class="form-control" id="sel2">
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
-                    <option>S&P 500</option>
+                    {{#each companies}}
+                    <option>{{Ticker}}</option>
+                    {{/each}}
                 </select>
             </div>
             <div class="col-lg-3 col-sm-6">

@@ -34,10 +34,31 @@ class AccountController {
 
     getMarketOverview(sammy) {
         if (userModel.isUserLoggedIn()) {
-            htmlHandler.setHtml('market-overview', '#content').then(() => {
-                chartProvider.createChart();
-                calendar.showCalendar();
+            let endDate = new Date();
+            let startDate = new Date();
+            startDate.setMonth(startDate.getMonth() - 6);
+
+            userModel.getUsersIndustry().then((industry) => {
+                stockData.getAllCompaniesInIndustry(industry).then((companies) => {
+                    templateHandler.setTemplate('market-overview', '#content', { companies: companies }).then(() => {
+                        let $startDate = $('#start-date');
+                        $startDate.val(time.buildDatesForDatePicker(startDate));
+
+                        let $endDate = $('#end-date');
+                        $endDate.val(time.buildDatesForDatePicker(endDate));
+
+                        calendar.showCalendar();
+                        updateChart();
+
+                        $endDate.change(updateChart);
+                        $startDate.change(updateChart);
+                        $('#sel1').change(updateChart);
+                        $('#sel2').change(updateChart);
+
+                    });
+                });
             });
+
         }
         else {
             sammy.redirect('#/home');
@@ -197,6 +218,23 @@ function onModalClose(identifier, sammy, redirect) {
     $(identifier).on('hidden.bs.modal', function () {
         sammy.redirect(redirect);
         showHeaderFooter();
+    });
+}
+
+function updateChart() {
+    let startDate = time.getDateFromDatePicker($('#start-date').val());
+    let endDate = time.getDateFromDatePicker($('#end-date').val());
+
+    let benchmark = $('#sel1').val();
+    let benchmarName = $("#sel1 option:selected").text();
+    let comp = $('#sel2').val();
+
+    let promises = [];
+    promises.push(stockData.getHistoricalPrices(benchmark, benchmarName, startDate, endDate));
+    promises.push(stockData.getHistoricalPrices(comp, comp, startDate, endDate));
+
+    Promise.all(promises).then((values) => {
+        chartProvider.createChart(values);
     });
 }
 
