@@ -3,7 +3,7 @@ import { htmlHandler } from 'htmlHandler';
 import { templateHandler } from 'templateHandler';
 import { chartProvider } from 'chartProvider';
 import { validator } from 'validator';
-import { stockData } from 'stockData';
+import { stockData, Company } from 'stockData';
 import { time } from 'time';
 import { calendar } from 'calendar';
 
@@ -85,7 +85,33 @@ class AccountController {
 
     getUserSettings(sammy) {
         if (userModel.isUserLoggedIn()) {
-            htmlHandler.setHtml('user-settings', '#content');
+            userModel.getUsersIndustry().then((industry) => {
+                stockData.getAllCompaniesInIndustry(industry).then((companies) => {
+                    userModel.getUsersWatchlist().then((tickers) => {
+
+                        for (let i = 0; i < tickers.length; i++) {
+                            let ticker = tickers[i];
+                            if (companies.find((x) => x.Ticker === ticker) === undefined) {
+                                companies.push(new Company(ticker));
+                            }
+                        }
+
+                        companies.find((x) => x.Ticker === tickers[0]).firstCompany = true;
+                        companies.find((x) => x.Ticker === tickers[1]).secondCompany = true;
+                        companies.find((x) => x.Ticker === tickers[2]).thirdCompany = true;
+                        companies.find((x) => x.Ticker === tickers[3]).fourthCompany = true;
+
+                        templateHandler.setTemplate('user-settings', '#content', { companies: companies }).then(() => {
+                            $('#industry option').each((i, item) => {
+                                let $item = $(item);
+                                if ($item.html() === industry) {
+                                    $item.attr('selected', 'selected');
+                                }
+                            })
+                        });
+                    });
+                });
+            });
         } else {
             sammy.redirect('#/home');
         }
@@ -117,7 +143,7 @@ class AccountController {
         userModel
             .signUp(email, password, username, passwordConfirm)
             .then(() => {
-                onModalClose('#signup-modal', sammy, '#/account/portfolio');
+                onModalClose('#signup-modal', sammy, '#/account/market-overview');
                 $('#signup-modal').modal('toggle');
             })
             .catch(console.log);

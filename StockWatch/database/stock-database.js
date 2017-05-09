@@ -116,8 +116,12 @@ const stockData = (function () {
     }
 
     function getAllCompaniesInIndustry(industry) {
-        industry = industry.replace(' ', '%2520');
-        let url = `https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D'http%3A%2F%2Fwww.nasdaq.com%2Fscreening%2Fcompanies-by-industry.aspx%3Findustry%3D${industry}%26render%3Ddownload'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`;
+        if (industries[industry] !== undefined) {
+            return Promise.resolve(industries[industry]);
+        }
+
+        let encodedIndustry = industry.replace(' ', '%2520');
+        let url = `https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D'http%3A%2F%2Fwww.nasdaq.com%2Fscreening%2Fcompanies-by-industry.aspx%3Findustry%3D${encodedIndustry}%26render%3Ddownload'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`;
         return new Promise((resolve, reject) => {
             $.getJSON(url)
                 .done((data) => {
@@ -151,6 +155,7 @@ const stockData = (function () {
         getPriceChange,
         getHistoricalPrices,
         get10Largest,
+        getAllCompaniesInIndustry,
         getOpeningClosingTime
     };
 }());
@@ -165,4 +170,4 @@ class Company {
     }
 }
 
-export { stockData };
+export { stockData, Company };

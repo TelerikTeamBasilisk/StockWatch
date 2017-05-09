@@ -18,7 +18,7 @@
                         <select class="form-control" id="industry" name="industry">
                             <option>Basic Industries</option>
                             <option>Capital Goods</option>
-                            <option>Consumer Goods</option>
+                            <option>Consumer Durables</option>
                             <option>Consumer Non-Durables</option>
                             <option>Consumer Services</option>
                             <option>Energy</option>
@@ -39,53 +39,33 @@
                     <div class="col-md-6 form">
                         <label for="sel1">First company</label>
                         <select class="form-control" id="sel1" name="firstCompany">
-                            <option>Google</option>
-                            <option>Amazon</option>
-                            <option>Dell</option>
-                            <option>Facebook</option>
-                            <option>Google</option>
-                            <option>Amazon</option>
-                            <option>Dell</option>
-                            <option>Facebook</option>
+                        {{#each companies}}
+                            <option {{#if firstCompany}} selected="selected" {{/if}}>{{Ticker}}</option>
+                        {{/each}}
                         </select>
                     </div>
                     <div class="col-md-6 form">
                         <label for="sel2">Second company</label>
                         <select class="form-control" id="sel2" name="secondCompany">
-                            <option>Google</option>
-                            <option>Amazon</option>
-                            <option>Dell</option>
-                            <option>Facebook</option>
-                            <option>Google</option>
-                            <option>Amazon</option>
-                            <option>Dell</option>
-                            <option>Facebook</option>
+                           {{#each companies}}
+                            <option {{#if secondCompany}} selected="selected" {{/if}}>{{Ticker}}</option>
+                            {{/each}}
                         </select>
                     </div>
                     <div class="col-md-6 form">
                         <label for="sel3">Third company</label>
                         <select class="form-control" id="sel3" name="thirdCompany">
-                            <option>Google</option>
-                            <option>Amazon</option>
-                            <option>Dell</option>
-                            <option>Facebook</option>
-                            <option>Google</option>
-                            <option>Amazon</option>
-                            <option>Dell</option>
-                            <option>Facebook</option>
+                            {{#each companies}}
+                            <option {{#if thirdCompany}} selected="selected" {{/if}}>{{Ticker}}</option>
+                           {{/each}}
                     </select>
                     </div>
                     <div class="col-md-6 form">
                         <label for="sel4">Fourth company</label>
                         <select class="form-control" id="sel4" name="fourthCompany">
-                            <option>Google</option>
-                            <option>Amazon</option>
-                            <option>Dell</option>
-                            <option>Facebook</option>
-                            <option>Google</option>
-                            <option>Amazon</option>
-                            <option>Dell</option>
-                            <option>Facebook</option>
+                          {{#each companies}}
+                            <option {{#if fourthCompany}} selected="selected" {{/if}}>{{Ticker}}</option>
+                           {{/each}}
                         </select>
                     </div>
                 </div>
