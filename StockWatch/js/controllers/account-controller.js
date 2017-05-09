@@ -146,7 +146,10 @@ class AccountController {
                 onModalClose('#signup-modal', sammy, '#/account/market-overview');
                 $('#signup-modal').modal('toggle');
             })
-            .catch(console.log);
+            .catch(error => {
+                console.log(error.message);
+                $('.label.label-danger').text(error.message);
+            });
     }
 
     signOut(sammy) {
