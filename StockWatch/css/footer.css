@@ -51,7 +51,11 @@
 }
 
 .footer-left ul li {
-	padding: 0px 30px 8px 0;
+	padding-bottom: 8px;
+}
+
+#main-navigation li{
+	padding-right: 30px;
 }
 
 .footer-left a {
