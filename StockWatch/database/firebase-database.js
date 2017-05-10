@@ -86,14 +86,12 @@ const firebaseDataBase = (function () {
 
             for (let key in list) {
                 if (list[key] === email) {
-                    $('.label.label-danger').text('The email address is already subscribed.');
-                    return;
+                    return false;
                 }
             }
 
-            database.ref('subscriptions').push(email).catch(error => {
-                console.log(error.message);
-            });
+            database.ref('subscriptions').push(email).catch(console.log);
+            return true;
         });
     }
 

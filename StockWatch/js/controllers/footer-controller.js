@@ -3,8 +3,19 @@ import { firebaseDataBase } from 'firebase-database';
 class FooterController {
 
     subscription() {
-        let email = $('#newsletter_signup_email').val();
-        firebaseDataBase.subscribe(email);
+        let $inputEmail = $('#newsletter_signup_email');
+        let email = $inputEmail.val();
+        if (!firebaseDataBase.subscribe(email)) {
+            let $subscribe = $('.subscribe-text');
+            let subscribeText = $subscribe.html();
+
+            $subscribe.text('The email address is already subscribed.');
+
+            setTimeout(() => {
+                $inputEmail.val('');
+                $subscribe.html(subscribeText);
+            }, 2000);
+        }
     }
 
     contact(sammy) {

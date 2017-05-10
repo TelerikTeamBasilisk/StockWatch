@@ -1,7 +1,7 @@
- const firebaseModule = (function () {
+const firebaseModule = (function () {
 
     // Initialize Firebase
-    var config = {
+    const config = {
         apiKey: "AIzaSyBxdeCncv1PLirIHaGX70sUtk8FFf_DJTY",
         authDomain: "stock-watch-eab0d.firebaseapp.com",
         databaseURL: "https://stock-watch-eab0d.firebaseio.com",
