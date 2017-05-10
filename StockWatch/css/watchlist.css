@@ -105,14 +105,14 @@
 .middle-column .align-right {
     position: relative;
     overflow: hidden;
-    width: 70%;
+    width: 50%;
 }
 
 .middle-column .align-left {
     position: relative;
     overflow: hidden;
     float: left;
-    width:30%;
+    width:50%;
 }
 
 .left-column #date {

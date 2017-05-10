@@ -113,11 +113,12 @@ const stockData = (function () {
 
         for (let i = 0; i < selected.length; i++) {
             let comp = selected[i];
-            promises.push(getPriceChange(comp.Ticker).then((priceChange) => {
-                comp.Price = priceChange.Price;
-                comp.Change = priceChange.Change;
-                return comp;
-            }));
+            promises.push(getPriceChange(comp.Ticker)
+                .then((priceChange) => {
+                    comp.Price = priceChange.Price;
+                    comp.Change = priceChange.Change;
+                    return comp;
+                }));
         }
 
         return Promise.all(promises);
@@ -130,6 +131,7 @@ const stockData = (function () {
 
         let encodedIndustry = industry.replace(' ', '%2520');
         let url = `https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D'http%3A%2F%2Fwww.nasdaq.com%2Fscreening%2Fcompanies-by-industry.aspx%3Findustry%3D${encodedIndustry}%26render%3Ddownload'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`;
+
         return new Promise((resolve, reject) => {
             $.getJSON(url)
                 .done((data) => {
