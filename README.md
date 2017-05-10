@@ -42,6 +42,6 @@ In the News tab one can see the last 10 news from Bloomberg. There is an option 
 ### URLs
 [**Live Demo**](https://stock-watch-eab0d.firebaseapp.com/)
 
-[**Video Presentation**](https://www.youtube.com/)
+[**Video Presentation**](https://youtu.be/oZwoByvm7kA)
 
 [**Link to GitHub repository**](https://github.com/TelerikTeamBasilisk/StockWatch)
