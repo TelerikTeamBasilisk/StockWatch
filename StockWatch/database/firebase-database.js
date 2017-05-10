@@ -80,7 +80,6 @@ const firebaseDataBase = (function () {
         });
     }
 
-
     function subscribe(email) {
         database.ref('subscriptions').once('value').then(function (snapshot) {
             let list = snapshot.val();

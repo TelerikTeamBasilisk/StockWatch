@@ -12,7 +12,11 @@ const time = (function () {
         let openClose = stockData.getOpeningClosingTime();
         $('#state-status').html(`${openClose.State}.`);
         $('#will-status').html(`${openClose.Will} in`);
-        $('#will-time').html(`${formatOneDigitNumber(openClose.Hours)}:${formatOneDigitNumber(openClose.Minutes)}:${formatOneDigitNumber(openClose.Seconds)}`);
+
+        let hh = formatOneDigitNumber(openClose.Hours);
+        let mm = formatOneDigitNumber(openClose.Minutes);
+        let ss = formatOneDigitNumber(openClose.Seconds);
+        $('#will-time').html(`${hh}:${mm}:${ss}`);
 
         if (window.location.href.includes('watchlist')) {
             setTimeout(startTime, 1000);

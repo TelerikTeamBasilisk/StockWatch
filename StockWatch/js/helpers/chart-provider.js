@@ -1,7 +1,9 @@
 import 'chart-js';
 const chartProvider = (function () {
 
-    function rearrangeData(values) {
+    let lineChart;
+
+    function createChartData(values) {
         let benchmark = values[0];
         let stock = values[1];
 
@@ -54,13 +56,32 @@ const chartProvider = (function () {
         return lineChartData;
     }
 
+    function updateChart(values) {
+        if (lineChart === undefined) {
+            createChart(values);
+        }
+        else {
+            let benchmark = values[0];
+            let stock = values[1];
+
+            lineChart.data.labels = benchmark.Dates;
+            lineChart.data.datasets[0].data = benchmark.Prices;
+            lineChart.data.datasets[0].label = benchmark.Ticker;
+
+            lineChart.data.datasets[1].data = stock.Prices;
+            lineChart.data.datasets[1].label = stock.Ticker;
+
+            lineChart.update();
+        }
+    }
+
     function createChart(values) {
-        let lineChartData = rearrangeData(values);
+        let lineChartData = createChartData(values);
 
         let canvas = $('#chart').get(0);
         let ctx = canvas.getContext('2d');
 
-        let indexChart = new Chart(ctx, {
+        lineChart = new Chart(ctx, {
             type: 'line',
             data: lineChartData,
             options: {
@@ -73,11 +94,11 @@ const chartProvider = (function () {
                 }
             }
         });
-        return indexChart;
+        return lineChart;
     }
 
     return {
-        createChart
+        updateChart: updateChart,
     };
 
 }());

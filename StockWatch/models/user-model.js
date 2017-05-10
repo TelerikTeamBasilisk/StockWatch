@@ -37,12 +37,9 @@ class UserModel {
     }
 
     isUserLoggedIn() {
-        let user = firebaseDataBase.getCurrentUser();
-        if (user) {
-            return true;
-        } else {
-            return false;
-        }
+        return new Promise((resolve, reject) => {
+            firebaseDataBase.onAuthStateChanged((user) => resolve(!!user));
+        });
     }
 }
 

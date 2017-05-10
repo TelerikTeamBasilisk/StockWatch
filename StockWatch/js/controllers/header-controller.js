@@ -1,6 +1,6 @@
+import { userModel } from 'user-model';
 import { htmlHandler } from 'htmlHandler';
 import { templateHandler } from 'templateHandler';
-import { userModel } from 'user-model';
 
 class HeaderController {
 
@@ -16,10 +16,10 @@ class HeaderController {
     }
 
     updateHeader() {
-        return templateHandler.setTemplate('header', '#header', { isLoggedIn: userModel.isUserLoggedIn() });
+        return userModel.isUserLoggedIn()
+            .then((isLoggedIn) => templateHandler.setTemplate('header', '#header', { isLoggedIn: isLoggedIn }));
     }
 }
 
 const headerController = new HeaderController();
-
 export { headerController };
