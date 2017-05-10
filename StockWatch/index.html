@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link href="./css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/footer.css">
     <link rel="icon" type="image/ico" href="./imgs/favicon.ico" />
     <title>StockWatch</title>
 </head>
@@ -23,7 +24,53 @@
     </section>
 
     <footer id="footer">
-
+        <div class="footer-top container">
+            <div class="footer-left">
+                <ul id="main-navigation">
+                    <li> <a href="#/home">Home </a></li>
+                    <li> <a href="#/about"> About </a> </li>
+                    <li> <a href="#/contact"> Contact Us </a> </li>
+                </ul>
+                <ul>
+                    <li> <a href="#/account/market-overview">Market Overview</a></li>
+                    <li> <a href="#/account/watchlist"> Watchlist</a></li>
+                    <li> <a href="#/account/news">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <div class="newsletter-box">
+                    <span class="label label-danger"></span>
+                    <form action="#/newsletter" id="subscribe-form" method="post">
+                        <p class="subscribe-text"><i class="fa fa-paper-plane" aria-hidden="true"></i> Subscribe to our weekly newsletter:</p>
+                        <input type="email" id="newsletter_signup_email" required="required" name="newsletter_signup[email]" placeholder="Your email address">
+                        <button class="btn btn-secondary btn-sm" type="submit"> Subscribe </button>
+                    </form>
+                </div>
+                <ul class="social">
+                    <li>
+                        <a href="https://www.facebook.com/"> <i class=" fa fa-facebook">   </i> </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/"> <i class="fa fa-twitter">   </i> </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/"> <i class="fa fa-google-plus">   </i> </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com"> <i class="fa fa-youtube">   </i> </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com"> <i class="fa fa-linkedin">   </i> </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/TelerikTeamBasilisk/StockWatch"> <i class="fa fa-github">   </i> </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © Created By Team Basilisk 2017
+        </div>
     </footer>
     <!--for supporting Promises in old browsers using bluebird-->
     <script type="text/javascript">

@@ -1,5 +1,4 @@
 import { userModel } from 'user-model';
-import { htmlHandler } from 'htmlHandler';
 import { templateHandler } from 'templateHandler';
 
 class HeaderController {
@@ -12,7 +11,6 @@ class HeaderController {
             });
             header.init();
         });
-        htmlHandler.setHtml('footer', '#footer');
     }
 
     updateHeader() {
