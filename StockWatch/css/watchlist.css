@@ -81,7 +81,7 @@
     font-size: 1em;
 }
 
-.right-column .change-p{
+.right-column .change{
     margin: 0;
     font-size: 1.8em;
     text-align: center;
@@ -138,7 +138,7 @@
 }
 
 @media (max-width: 575px) {
-    .right-column .change-p,
+    .right-column .change,
     .content-square-left p,
     .content-square-right p {
         font-size: 2em;

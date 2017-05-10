@@ -43,7 +43,7 @@ const stockData = (function () {
             $.getJSON(url)
                 .done((data) => {
                     let obj = data.query.results.quote;
-                    let stock = { Ticker: symbol, Price: obj.Ask, Change: obj.Change };
+                    let stock = { Ticker: symbol, Price: obj.Ask, Change: obj.PercentChange };
                     resolve(stock);
                 })
                 .fail(reject);
