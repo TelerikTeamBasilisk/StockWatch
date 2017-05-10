@@ -3,7 +3,7 @@
 JavaScript Applications | Team "Basilisk" | Business Application
 
 ### StockWatch Application
-This application was created as part of the teamwork assignment for the course JavaScript Application (April 2017) at Telerik Academy by Team 'Basilisk'. The application gathers real time financial information from various sources and presents it to the user in a concise manner. StockWatch provides data for all stocks included in the [NASDAQ Company List](http://www.nasdaq.com/screening/company-list.aspx). This includes companies listed on [NASDAQ](http://www.nasdaq.com/), [NYSE](https://www.nyse.com/index) and AMEX. Real time and historical stock data are downloaded form [Yahoo Finance](https://finance.yahoo.com/) and [Google Finance](https://www.google.com/finance). The source of the financial news is [Bloomberg](https://www.bloomberg.com/), but they are provided via [News API](https://newsapi.org).
+This application was created as part of the teamwork assignment for the course JavaScript Application (April 2017) at Telerik Academy by Team 'Basilisk'. The application gathers real time financial information from various sources and presents it to the user in a concise manner. StockWatch provides data for all stocks included in the [NASDAQ Company List](http://www.nasdaq.com/screening/company-list.aspx). This includes companies listed on [NASDAQ](http://www.nasdaq.com/), [NYSE](https://www.nyse.com/index) and AMEX. Real time and historical stock data are downloaded form [Yahoo Finance](https://finance.yahoo.com/). The source of the financial news is [Bloomberg](https://www.bloomberg.com/), but they are provided via [News API](https://newsapi.org).
 
 The application is to be further developed by adding features like 
 * Provide news about the industry and companies chosen by user
@@ -32,12 +32,9 @@ In the News tab one can see the last 10 news from Bloomberg. There is an option 
 
 
 ### Screenshots		   
-<img width=300px src="resources/imgs/team.JPG">
-<img width=300px src="resources/imgs/home.JPG"> 
-<img width=300px src="resources/imgs/market-overview.JPG"">  
-<img width=300px src="resources/imgs/watchlist.JPG"> 
-<img width=300px src="resources/imgs/news.jpg"> 
-<img width=300px src="resources/imgs/user-settings.JPG"> 
+<img width="300px" src="resources/imgs/team.JPG"> <img width="300px" src="resources/imgs/home.JPG"> 
+<img width="300px" src="resources/imgs/market-overview.JPG"> <img width="300px" src="resources/imgs/watchlist.JPG"> 
+<img width="300px" src="resources/imgs/news.jpg"> <img width="300px" src="resources/imgs/user-settings.JPG"> 
  
 ### URLs
 [**Live Demo**](https://stock-watch-eab0d.firebaseapp.com/)
