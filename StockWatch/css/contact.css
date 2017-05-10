@@ -3,6 +3,8 @@
     height: 500px;
     margin: auto;
     width: 50%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 #success_message {
@@ -20,4 +22,9 @@
 input,
 textarea {
     margin-top: 10px;
+}
+
+#contact-logo{
+    width: 100px;
+    margin-bottom: 20px;
 }

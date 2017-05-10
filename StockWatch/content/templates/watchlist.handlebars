@@ -16,7 +16,6 @@
     </ul>
     <div class="tab-content container">
         <div class="row">
-
             <div class="col-12 col-md-3 col-sm-6 left-column text-center">
                 <div class="square-left">
                     <div class="content-square-left">
@@ -26,8 +25,14 @@
                 </div>
                 <div class="square-left">
                     <div class="content-square-left">
-                        <p id="state">NASDAQ is open</p>
-                        <p id="will">Closes in</p>
+                        <div id="state">
+                            <p>NASDAQ is</p>
+                            <p id="state-status"></p>
+                        </div>
+                        <div id="will">
+                            <p id="will-status"></p>
+                            <p id="will-time"></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -35,13 +40,14 @@
             <div class="col-12 col-sm-6 col-md-3 middle-column">
                 <div class="square-middle">
                     <div class="content-square-middle">
-                        <h4 class="text-center">Stocks</h4>
+                        <p class="text-center">INDUSTRY</p>
+                        <h4 class="text-center">{{industry}}</h4>
                         {{#each companies}}
                         <div class="align-left">
-                            <div> {{Ticker}}</div>
+                            {{Ticker}}
                         </div>
                         <div class="align-right text-right">
-                            <div>${{Price}}</div>
+                            ${{Price}}
                         </div>
                         {{/each}}
                     </div>
@@ -53,8 +59,8 @@
                 <div class="square-right">
                     <div class="content-square-right">
                         <p class="company-name">{{Ticker}}</p>
-                        <p class="index">{{Price}}</p>
-                        <p><span class="change">{{Change}}</span>%</p>
+                        <p class="change-p"><span class="change">{{Change}}</span>%</p>
+                        <p class="index">${{Price}}</p>
                     </div>
                 </div>
                 {{/each}}
@@ -64,8 +70,8 @@
                 <div class="square-right">
                     <div class="content-square-right">
                         <p class="company-name">{{Ticker}}</p>
-                        <p class="index">{{Price}}</p>
-                        <p class="change"><span class="change">{{Change}}</span>%</p>
+                        <p class="change-p"><span class="change">{{Change}}</span>%</p>
+                        <p class="index">${{Price}}</p>
                     </div>
                 </div>
                 {{/each}}

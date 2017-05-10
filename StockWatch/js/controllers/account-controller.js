@@ -73,7 +73,7 @@ class AccountController {
                         Promise.all(promises).then((values) => {
                             let leftColumn = [values[0], values[2]];
                             let rightColumn = [values[1], values[3]];
-                            templateHandler.setTemplate('watchlist', '#content', { companies: companies, leftColumn: leftColumn, rightColumn: rightColumn }).then(() => {
+                            templateHandler.setTemplate('watchlist', '#content', { industry: industry, companies: companies, leftColumn: leftColumn, rightColumn: rightColumn }).then(() => {
                                 $.each($('.change'), (i, item) => {
                                     let $item = $(item);
                                     if (+$item.html() < 0) {

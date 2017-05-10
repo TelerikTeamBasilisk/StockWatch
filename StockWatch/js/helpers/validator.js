@@ -12,7 +12,7 @@ class Validator {
                     minlength: 5,
                 }
             },
-            highlight: function(element) {
+            highlight: function (element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');
             },
             // Showing green OK if input is valid
@@ -42,7 +42,7 @@ class Validator {
                     minlength: 3,
                 }
             },
-            highlight: function(element) {
+            highlight: function (element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');
             },
             // Showing green OK if input is valid
@@ -65,14 +65,9 @@ class Validator {
                     minlength: 3,
                 }
             },
-            highlight: function(element) {
+            highlight: function (element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');
             },
-            // Showing green OK if input is valid
-            // success: function (element) {
-            //     element.text('OK!').addClass('valid')
-            //         .closest('.control-group').removeClass('error').addClass('success');
-            // }
         });
     }
 }

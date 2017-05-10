@@ -10,8 +10,9 @@ const time = (function () {
         $('#hour-minute').html(`${h}:${m}:${s}`);
 
         let openClose = stockData.getOpeningClosingTime();
-        $('#state').html(`NASDAQ is ${openClose.State}.`);
-        $('#will').html(`${openClose.Will} in ${formatOneDigitNumber(openClose.Hours)}:${formatOneDigitNumber(openClose.Minutes)}:${formatOneDigitNumber(openClose.Seconds)}`);
+        $('#state-status').html(`${openClose.State}.`);
+        $('#will-status').html(`${openClose.Will} in`);
+        $('#will-time').html(`${formatOneDigitNumber(openClose.Hours)}:${formatOneDigitNumber(openClose.Minutes)}:${formatOneDigitNumber(openClose.Seconds)}`);
 
         if (window.location.href.includes('watchlist')) {
             setTimeout(startTime, 1000);

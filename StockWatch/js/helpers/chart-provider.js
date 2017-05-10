@@ -10,8 +10,8 @@ const chartProvider = (function () {
             datasets: [{
                 data: benchmark.Prices, //data from API for the first chart Y
                 label: benchmark.Ticker,
-                backgroundColor: "rgba(75,192,192,0.4)",
-                borderColor: 'rgba(75,192,192,1)',
+                backgroundColor: 'rgba(86,177,238,0.4)',
+                borderColor: 'rgba(86,177,238,1)',
                 borderWidth: 2,
                 borderCapStyle: 'butt',
                 borderDash: [],

@@ -38,13 +38,12 @@ const stockData = (function () {
     }
 
     function getPriceChange(symbol) {
-        let url = `https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D'http%3A%2F%2Ffinance.google.com%2Ffinance%2Finfo%3Fclient%3Dig%26q%3DNASDAQ%3A${symbol}'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`;
+        let url = `https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22${symbol}%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=`;
         return new Promise((resolve, reject) => {
             $.getJSON(url)
                 .done((data) => {
-                    let text = data.query.results.body;
-                    let obj = $.parseJSON(text.replace('\n// ', ''))[0];
-                    let stock = { Ticker: symbol, Price: obj.l, Change: obj.c };
+                    let obj = data.query.results.quote;
+                    let stock = { Ticker: symbol, Price: obj.Ask, Change: obj.Change };
                     resolve(stock);
                 })
                 .fail(reject);
@@ -110,15 +109,18 @@ const stockData = (function () {
         sortByMarketCap(industryData);
 
         let selected = industryData.slice(0, 10);
+        let promises = [];
 
         for (let i = 0; i < selected.length; i++) {
             let comp = selected[i];
-            getPriceChange(comp.Ticker).then((priceChange) => {
+            promises.push(getPriceChange(comp.Ticker).then((priceChange) => {
                 comp.Price = priceChange.Price;
                 comp.Change = priceChange.Change;
-            });
+                return comp;
+            }));
         }
-        return selected;
+
+        return Promise.all(promises);
     }
 
     function getAllCompaniesInIndustry(industry) {
